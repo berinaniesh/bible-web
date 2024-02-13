@@ -53,7 +53,7 @@ const config = {
 				sm: "calc(var(--radius) - 4px)"
 			},
 			fontFamily: {
-				'sans': ['Noto Sans', 'ui-sans-serif', 'system-ui', 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Noto Sans Tamil", "Noto Sans Malayalam"],
+				'sans': ["Inter", 'Noto Sans', 'ui-sans-serif', 'system-ui', 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Noto Sans Tamil", "Noto Sans Malayalam"],
 				'serif': ["Noto Serif", 'ui-serif', 'Georgia', "Cambria", "Times New Roman", "Times", "serif", "Noto Serif Tamil", "Noto Serif Malayalam"],
 				'mono': ["Cascasdia Code", "Cascadia Mono", "Fira Code", "Fira Mono", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
 				'tamil': ['Noto Sans Tamil', 'Noto Serif Tamil', 'Lohit Tamil', "Tiro Tamil", "TAMu_Maduram", ],
