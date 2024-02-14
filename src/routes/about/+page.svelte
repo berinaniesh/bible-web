@@ -24,6 +24,13 @@
 		>.
 	</li>
 	<li>
+		Everything on this site is <a
+			class="underline"
+			target="blank"
+			href="https://github.com/berinaniesh/bible-web">open sourced</a
+		>. Forking and self hosting is not only allowed, but encouraged.
+	</li>
+	<li>
 		The backend of this site can be found <a
 			target="blank"
 			class="underline"
@@ -35,13 +42,6 @@
 	<li>
 		No guarantees are made for the availability, reliability or correctness of the frontend or the
 		backend.
-	</li>
-	<li>
-		Everything on this site is open sourced. Forking and self hosting is encouraged. Feel free to <a
-			class="underline"
-			target="blank"
-			href="https://berinaniesh.xyz/contact">contact</a
-		> if you need any help with hosting.
 	</li>
 	<li>
 		The source of Bible translations can be found at <a
