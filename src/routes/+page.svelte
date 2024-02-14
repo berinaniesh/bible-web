@@ -7,7 +7,9 @@
 </script>
 
 <div>
-  <Breadcrumb crumbItems={currentLocation} />
+  <div class="my-4">
+    <Breadcrumb crumbItems={currentLocation} />
+  </div>
   <div class="mt-8 mb-4 font-bold font-2xl">
     Available Translations
   </div>
