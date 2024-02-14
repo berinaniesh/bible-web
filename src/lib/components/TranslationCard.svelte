@@ -5,7 +5,7 @@
 	export let translation: Translation;
 </script>
 
-<Card.Root class="bg-[url('/marbletexture.avif')]">
+<Card.Root>
 	<Card.Header>
 		<Card.Title><a href={`/${translation.name}`}>{translation.name}</a></Card.Title>
 		<Card.Description>{translation.full_name}</Card.Description>
