@@ -5,7 +5,7 @@
 	export let translation: Translation;
 </script>
 
-<Card.Root>
+<Card.Root class="shadow">
 	<Card.Header>
 		<Card.Title><a href={`/${translation.name}`}>{translation.name}</a></Card.Title>
 		<Card.Description>{translation.full_name}</Card.Description>
