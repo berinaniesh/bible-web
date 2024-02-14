@@ -8,7 +8,7 @@
 
 <div class="w-full">
 	<Breadcrumb crumbItems={currentLocation} />
-	<div class="font-2xl my-2 font-bold">Available Translations</div>
+	<div class="font-2xl my-2 font-bold text-center">Available Translations</div>
 	<div class="grid grid-cols-1 md:grid-cols-2 mx-auto w-full">
 		{#each data.translations as translation}
 			<div class="m-4 my-6 w-80"><TranslationCard {translation} /></div>
