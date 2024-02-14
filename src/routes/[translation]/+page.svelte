@@ -8,11 +8,11 @@
     import Button from '$lib/components/ui/button/button.svelte';
 </script>
 
-<div>
+<div class="w-full">
     <Breadcrumb crumbItems={currentLocation} />
     <div class="grid grid-cols-1 md:grid-cols-2 mx-auto w-max">
         {#each data.splitBooks as testament}
-            <div class="m-4 w-72">
+            <div class="mx-4 w-72">
                 <h3 class="text-center font-bold mb-4">{testament.testamentName}</h3>
                 <ul>
                     {#each testament.bookNames as element}
