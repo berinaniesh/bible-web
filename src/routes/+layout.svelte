@@ -5,7 +5,7 @@
 </script>
 
 <div class="max-w-screen-md mx-auto font-sans">
-    <Header />
+    <Header isDark={false}/>
     <Separator />
     <slot />
 </div>

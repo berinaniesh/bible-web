@@ -6,7 +6,7 @@
 
 <div class="my-2 h-8 flex flex-col justify-center">
     <div class="flex text-sm">
-        <Home class="size-6"/>
+        <Home class="size-6 ml-1"/>
         {#each crumbItems as crumbItem}
             {#if crumbItem.isFinal}
                 <a class="mx-2 font-bold hover:underline" href={crumbItem.location}>{crumbItem.locationName}</a>
