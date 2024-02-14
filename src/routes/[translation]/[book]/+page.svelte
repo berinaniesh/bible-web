@@ -6,6 +6,10 @@
 </script>
 
 
+<svelte:head>
+  <title>{data.bookStruct.book_name} • {data.currentTranslation} • Bible</title>
+</svelte:head>
+
 <div>
     <Breadcrumb crumbItems={data.currentLocation} />
     <div class={"m-4 font-bold text-center " + data.font}>

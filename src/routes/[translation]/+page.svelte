@@ -4,6 +4,10 @@
     import Button from '$lib/components/ui/button/button.svelte';
 </script>
 
+<svelte:head>
+  <title>{data.currentTranslation} • Bible</title>
+</svelte:head>
+
 <div class="w-full">
     <Breadcrumb crumbItems={data.currentLocation} />
     <div class={"grid grid-cols-1 md:grid-cols-2 mx-auto w-max " + data.font}>

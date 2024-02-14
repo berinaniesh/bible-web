@@ -5,6 +5,11 @@
     import { ArrowLeft, ArrowRight } from "lucide-svelte";
 </script>
 
+<svelte:head>
+  <title>{data.bookStruct.book_name} {data.currentChapter} • {data.currentTranslation} • Bible</title
+  >
+</svelte:head>
+
 <Breadcrumb crumbItems={data.currentLocation}/>
 <div class={"m-4 font-bold text-center " + data.font}>
     {data.bookStruct.book_name} {data.currentChapter}
