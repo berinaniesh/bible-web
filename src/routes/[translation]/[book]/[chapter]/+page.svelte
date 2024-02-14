@@ -6,11 +6,11 @@
 </script>
 
 <Breadcrumb crumbItems={data.currentLocation}/>
-<div class="m-4 font-bold text-center">
+<div class={"m-4 font-bold text-center " + data.font}>
     {data.bookStruct.book_name} {data.currentChapter}
 </div>
 {#each data.verses as verse}
-    <p class="my-4 leading-loose"><sup>{verse.verse_number}</sup> {verse.verse}</p>
+    <p class={"my-4 leading-loose " + data.font}><sup>{verse.verse_number}</sup> {verse.verse}</p>
 {/each}
 <div class="flex justify-between w-full my-12 mx-auto">
     {#if data.nav.previous}

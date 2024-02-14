@@ -8,7 +8,7 @@
 
 <div>
     <Breadcrumb crumbItems={data.currentLocation} />
-    <div class="m-4 font-bold text-center">
+    <div class={"m-4 font-bold text-center " + data.font}>
         {data.bookStruct.book_name}
     </div>
     <div class="grid grid-cols-4 md:grid-cols-6 w-2/3 gap-3 mx-auto my-6">

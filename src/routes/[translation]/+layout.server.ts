@@ -9,7 +9,16 @@ export const load: LayoutServerLoad = async ({fetch, params}) => {
         { location: '/', locationName: 'Home', isFinal: false }, 
         {location: "", locationName: params.translation.toUpperCase(), isFinal: true}
     ];
+    let font;
+    if (params.translation.toUpperCase() === "TOVBSI") {
+        font = "font-tamil";
+    } else if (params.translation.toUpperCase() === "MLSVP") {
+        font = "font-malayalam";
+    } else {
+        font = "font-sans";
+    }
     return {
+        font: font,
         currentLocation: currentLocation,
         splitBooks: splitBooks,
         currentTranslation: params.translation
