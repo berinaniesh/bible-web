@@ -1,6 +1,5 @@
 <script lang="ts">
   export let data;
-  import { Button } from "$lib/components/ui/button";
   import Breadcrumb from "$lib/components/Breadcrumb.svelte";
   import Footer from "$lib/components/Footer.svelte";
   import TranslationCard from "$lib/components/TranslationCard.svelte";
