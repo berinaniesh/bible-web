@@ -18,6 +18,6 @@ export const load: PageServerLoad = async ({fetch, params}) => {
     return {
         params: params,
         chapters: chapters,
-        nav: nav
+        nav: nav,
     }
 }

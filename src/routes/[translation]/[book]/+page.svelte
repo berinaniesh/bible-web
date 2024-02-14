@@ -3,7 +3,7 @@
     const currentLocation = [
         { location: '/', locationName: 'Home', isFinal: false }, 
         {location: "/" + data.params.translation, locationName: data.params.translation.toUpperCase(), isFinal: false},
-        {location: "/" + data.params.translation + data.params.book, locationName: data.params.book.replace("-", " "), isFinal: true}
+        {location: "", locationName: data.params.book.replace("-", " "), isFinal: true}
     ];
     import Breadcrumb from '$lib/components/Breadcrumb.svelte';
     function findBook() {
