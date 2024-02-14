@@ -17,6 +17,7 @@
     }
     const bookStruct = findBook();
     import Button from '$lib/components/ui/button/button.svelte';
+    import { ArrowRight, ArrowLeft } from "lucide-svelte";
 </script>
 
 
@@ -29,5 +30,17 @@
         {#each data.chapters as chapter}
             <a href={"/" + data.params.translation + "/" + data.params.book + "/" + chapter}><Button variant="outline" class="w-12">{chapter}</Button></a>
         {/each}
+    </div>
+    <div data-sveltekit-reload class="flex justify-between w-3/4 my-12 mx-auto">
+        {#if data.nav.previous}
+            <a href={"/" + data.params.translation + "/" + data.nav.previous.book.replace(" ", "-")}><Button><ArrowLeft></ArrowLeft></Button></a>
+        {:else}
+            <div></div>
+        {/if}
+        {#if data.nav.next}
+        <a href={"/" + data.params.translation + "/" + data.nav.next.book.replace(" ", "-")}><Button><ArrowRight></ArrowRight></Button></a>
+        {:else}
+            <div></div>
+        {/if}
     </div>
 </div>
