@@ -1,12 +1,9 @@
 <script lang="ts">
-    let isMenuOpen = false
+	let isMenuOpen = false;
 </script>
 
-
 <div>
-    {#if isMenuOpen}
-        <div class="fixed top-0 right-0 h-screen w-80 bg-red-500">
-            boo
-        </div>
-    {/if}
+	{#if isMenuOpen}
+		<div class="fixed right-0 top-0 h-screen w-80 bg-red-500">boo</div>
+	{/if}
 </div>

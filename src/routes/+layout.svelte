@@ -2,7 +2,7 @@
 	import '../app.pcss';
 	import Header from '$lib/components/Header.svelte';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
-	import RightMenu from "$lib/components/RightMenu.svelte";
+	import RightMenu from '$lib/components/RightMenu.svelte';
 	import { ModeWatcher } from 'mode-watcher';
 </script>
 

@@ -6,18 +6,18 @@
 </script>
 
 <svelte:head>
-  <title>The Bible</title>
+	<title>The Bible</title>
 </svelte:head>
 
 <div class="w-full">
 	<Breadcrumb crumbItems={data.currentLocation} />
-	<div class="font-2xl mb-2 font-bold text-center">Available Translations</div>
-	<div class="grid grid-cols-1 md:grid-cols-2 mx-auto w-full">
+	<div class="font-2xl mb-2 text-center font-bold">Available Translations</div>
+	<div class="mx-auto grid w-full grid-cols-1 md:grid-cols-2">
 		{#each data.translations as translation}
-			<div class="m-4 ml-7 my-6 w-80"><TranslationCard {translation} /></div>
+			<div class="m-4 my-6 ml-7 w-80"><TranslationCard {translation} /></div>
 		{/each}
 	</div>
 	<div class="my-8 flex justify-center">
-		<Footer />
+		<Footer link={data.continueReading} />
 	</div>
 </div>
