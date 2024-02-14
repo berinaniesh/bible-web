@@ -12,7 +12,7 @@
     <Breadcrumb crumbItems={data.currentLocation} />
     <div class={"grid grid-cols-1 md:grid-cols-2 mx-auto w-max " + data.font}>
         {#each data.splitBooks as testament}
-            <div class="mx-4 w-72">
+            <div class="mx-4 w-72 mb-8">
                 <h3 class="text-center font-bold mb-4">{testament.testamentName}</h3>
                 <ul>
                     {#each testament.bookNames as element}
