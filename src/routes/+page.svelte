@@ -10,7 +10,7 @@
 	<div class="my-4">
 		<Breadcrumb crumbItems={currentLocation} />
 	</div>
-	<div class="font-2xl mb-4 mt-8 font-bold">Available Translations</div>
+	<div class="font-2xl my-4 font-bold">Available Translations</div>
 	<div class="grid grid-cols-1 md:grid-cols-2">
 		{#each data.translations as translation}
 			<div class="m-4 ml-6 w-80"><TranslationCard {translation} /></div>
