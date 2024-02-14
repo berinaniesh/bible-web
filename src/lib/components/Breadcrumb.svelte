@@ -4,14 +4,12 @@
 	import { Home, ChevronRight } from 'lucide-svelte';
 </script>
 
-<div class="my-2 flex h-8 flex-col justify-center">
+<div class="my-6 flex h-8 flex-col justify-center">
 	<div class="flex text-sm">
 		<Home class="size-6" />
 		{#each crumbItems as crumbItem}
 			{#if crumbItem.isFinal}
-				<a class="mx-2 font-bold hover:underline" href={crumbItem.location}
-					>{crumbItem.locationName}</a
-				>
+				<div class="mx-2 font-bold">{crumbItem.locationName}</div>
 			{:else}
 				<div class="flex">
 					<a class="mx-2 hover:underline" href={crumbItem.location}>{crumbItem.locationName}</a>

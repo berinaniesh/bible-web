@@ -7,9 +7,7 @@
 </script>
 
 <div>
-	<div class="my-4">
-		<Breadcrumb crumbItems={currentLocation} />
-	</div>
+	<Breadcrumb crumbItems={currentLocation} />
 	<div class="font-2xl my-4 font-bold">Available Translations</div>
 	<div class="grid grid-cols-1 md:grid-cols-2">
 		{#each data.translations as translation}
