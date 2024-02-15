@@ -13,7 +13,7 @@
 	>
 </svelte:head>
 
-<Header availableTranslations={data.translations} currentTranslation={data.currentTranslation}/>
+<Header displayParallel={true} parallelSelectionForm={data.form} currentTranslation={data.currentTranslation}/>
 <Separator />
 
 <Breadcrumb crumbItems={data.currentLocation} />

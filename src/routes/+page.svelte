@@ -11,7 +11,7 @@
 	<title>The Bible</title>
 </svelte:head>
 
-<Header availableTranslations={[]} currentTranslation={""}/>
+<Header displayParallel={false} parallelSelectionForm={""} currentTranslation={""}/>
 <Separator />
 <div class="w-full">
 	<Breadcrumb crumbItems={data.currentLocation} />

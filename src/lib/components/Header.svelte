@@ -2,12 +2,12 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { toggleMode } from 'mode-watcher';
 	import { Sun, Moon, Rows2 } from 'lucide-svelte';
-	import { Label } from "$lib/components/ui/label";
-	import { Checkbox } from "$lib/components/ui/checkbox";
 	import * as Popover from "$lib/components/ui/popover";
-	import type { Translation } from "$lib/types";
-	export let availableTranslations: Translation[];
+	import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
+	export let displayParallel: boolean;
 	export let currentTranslation: string;
+	export let parallelSelectionForm: any;
+
   </script>
 
 <div class="my-1 flex h-12 flex-col justify-center">
@@ -22,7 +22,7 @@
 			<div class="flex flex-col justify-center">
 				<div class="flex">
 					<div class="mx-2 flex flex-col justify-center">
-						{#if availableTranslations.length !== 0}
+						{#if displayParallel === true}
 							<Popover.Root portal={null}>
 								<Popover.Trigger asChild let:builder>
 								<Button builders={[builder]} variant="outline"><Rows2 /></Button>
@@ -35,19 +35,7 @@
 										</p>
 								    </div>
 									<div>
-									{#each availableTranslations as tr}
-											{#if currentTranslation !== tr.name}
-											<div>
-												<Checkbox />
-												<Label>{tr.name}</Label>
-											</div>
-										{/if}
-									{/each}
-									</div>
-									<div class="h-12 flex justify-end">
-										<a href="/">
-											<Button>Go</Button>
-										</a>
+										<ParallelTranslationsForm form={parallelSelectionForm} currentTranslation={currentTranslation}/>
 									</div>
 								</Popover.Content>
 							</Popover.Root>
