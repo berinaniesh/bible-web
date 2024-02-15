@@ -2,6 +2,8 @@ import { API_URL } from '$lib';
 import type { PageServerLoad, Actions } from './$types';
 import { superValidate } from "sveltekit-superforms/server";
 import { parallelTranslationsFormSchema } from "$lib/schema";
+import { fail } from "@sveltejs/kit";
+import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
 
 
 export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
@@ -42,12 +44,16 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 	};
 };
 
-export const actions = {
-	setParallelTranslations: async ({ cookies, request }) => {
-		const data = await request.formData();
-		const email = data.get('email');
-		const password = data.get('password');
-
-		return { success: true };
-	}
-} satisfies Actions;
+export const actions: Actions = {
+	default: async (event) => {
+	  const form = await superValidate(event, parallelTranslationsFormSchema);
+	  if (!form.valid) {
+		return fail(400, {
+		  form,
+		});
+	  }
+	  return {
+		success: "true"
+	  };
+	},
+  }
