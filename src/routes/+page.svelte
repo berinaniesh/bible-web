@@ -3,12 +3,16 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import TranslationCard from '$lib/components/TranslationCard.svelte';
+	import { Separator } from "$lib/components/ui/separator";
+	import Header from '$lib/components/Header.svelte';
 </script>
 
 <svelte:head>
 	<title>The Bible</title>
 </svelte:head>
 
+<Header availableTranslations={[]} currentTranslation={""}/>
+<Separator />
 <div class="w-full">
 	<Breadcrumb crumbItems={data.currentLocation} />
 	<div class="font-2xl mb-2 text-center font-bold">Available Translations</div>

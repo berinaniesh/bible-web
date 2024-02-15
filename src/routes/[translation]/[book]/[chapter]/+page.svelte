@@ -3,6 +3,8 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { ArrowLeft, ArrowRight } from 'lucide-svelte';
+	import { Separator } from "$lib/components/ui/separator";
+	import Header from '$lib/components/Header.svelte';
 </script>
 
 <svelte:head>
@@ -10,6 +12,9 @@
 		>{data.bookStruct.book_name} {data.currentChapter} • {data.currentTranslation} • Bible</title
 	>
 </svelte:head>
+
+<Header availableTranslations={data.translations} currentTranslation={data.currentTranslation}/>
+<Separator />
 
 <Breadcrumb crumbItems={data.currentLocation} />
 <div class={'m-4 text-center font-bold ' + data.font}>

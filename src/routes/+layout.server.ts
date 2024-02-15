@@ -1,7 +1,7 @@
-import type { PageServerLoad } from './$types';
+import type { LayoutServerLoad } from './$types';
 import { API_URL } from '$lib';
 
-export const load: PageServerLoad = async ({ fetch, cookies }) => {
+export const load: LayoutServerLoad = async ({ fetch, cookies }) => {
 	let continueReading;
 	let currentTranslation = cookies.get('currentTranslation');
 	let currentBook = cookies.get('currentBook');

@@ -2,12 +2,16 @@
 	export let data;
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { Separator } from "$lib/components/ui/separator";
+	import Header from '$lib/components/Header.svelte';
 </script>
 
 <svelte:head>
 	<title>{data.currentTranslation} • Bible</title>
 </svelte:head>
 
+<Header availableTranslations={[]} currentTranslation={""}/>
+<Separator />
 <div class="w-full">
 	<Breadcrumb crumbItems={data.currentLocation} />
 	<div class={'mx-auto grid w-max grid-cols-1 md:grid-cols-2 ' + data.font}>

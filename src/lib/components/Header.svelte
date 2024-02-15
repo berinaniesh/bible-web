@@ -1,8 +1,14 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { toggleMode } from 'mode-watcher';
-	import { Sun, Moon } from 'lucide-svelte';
-</script>
+	import { Sun, Moon, Rows2 } from 'lucide-svelte';
+	import { Label } from "$lib/components/ui/label";
+	import { Checkbox } from "$lib/components/ui/checkbox";
+	import * as Popover from "$lib/components/ui/popover";
+	import type { Translation } from "$lib/types";
+	export let availableTranslations: Translation[];
+	export let currentTranslation: string;
+  </script>
 
 <div class="my-1 flex h-12 flex-col justify-center">
 	<div class="grid grid-cols-2">
@@ -14,15 +20,49 @@
 				<!-- Empty div to get justify-between -->
 			</div>
 			<div class="flex flex-col justify-center">
-				<Button variant="outline" class="w-12 text-lg" on:click={toggleMode}>
-					<Sun
-						class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-					/>
-					<Moon
-						class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-					/>
-					<span class="sr-only">Toggle theme</span>
-				</Button>
+				<div class="flex">
+					<div class="mx-2 flex flex-col justify-center">
+						{#if availableTranslations.length !== 0}
+							<Popover.Root portal={null}>
+								<Popover.Trigger asChild let:builder>
+								<Button builders={[builder]} variant="outline"><Rows2 /></Button>
+								</Popover.Trigger>
+								<Popover.Content class="w-72 p-8">
+									<div>
+										<p class="text-lg font-bold">Parallel Reading</p>
+										<p class="text-sm text-muted-foreground">
+										Select translations to read together.
+										</p>
+								    </div>
+									<div>
+									{#each availableTranslations as tr}
+											{#if currentTranslation !== tr.name}
+											<div>
+												<Checkbox />
+												<Label>{tr.name}</Label>
+											</div>
+										{/if}
+									{/each}
+									</div>
+									<div class="h-12 flex justify-end">
+										<a href="/">
+											<Button>Go</Button>
+										</a>
+									</div>
+								</Popover.Content>
+							</Popover.Root>
+						{/if}
+					</div>
+					<Button variant="outline" class="w-12 text-lg mx-2" on:click={toggleMode}>
+						<Sun
+							class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+						/>
+						<Moon
+							class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+						/>
+						<span class="sr-only">Toggle theme</span>
+					</Button>
+				</div>
 			</div>
 		</div>
 	</div>

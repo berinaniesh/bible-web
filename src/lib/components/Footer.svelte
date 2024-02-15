@@ -2,6 +2,7 @@
 	export let link: string | undefined;
 	const footerElements = [
 		{ key: 'about', text: 'About' },
+		{ key: 'help', text: 'Help'},
 		{ key: 'changelog', text: 'Changelog' }
 	];
 </script>
