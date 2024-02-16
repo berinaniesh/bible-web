@@ -2,6 +2,7 @@
     import * as Form from "$lib/components/ui/form";
     import { parallelTranslationsFormSchema, type ParallelTranslationsFormSchema } from "$lib/schema";
     import type { SuperValidated } from "sveltekit-superforms";
+    import { toast } from "svelte-sonner";
     export let form: SuperValidated<ParallelTranslationsFormSchema>;
     export let currentTranslation: string;
     const translations = ["TOVBSI", "KJV", "MLSVP", "ASV"]
@@ -25,5 +26,5 @@
             </Form.Field>
         {/if}
     {/each}
-    <Form.Button>Submit</Form.Button>
+    <Form.Button on:click={() => toast.success("Preference saved")}>Submit</Form.Button>
   </Form.Root>
