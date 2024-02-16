@@ -12,7 +12,7 @@
 				<div class="mx-2 font-bold">{crumbItem.locationName}</div>
 			{:else if crumbItem.location === "/"}
 				<div class="flex">
-					<a data-sveltekit-reload class="mx-2 hover:underline" href="/">Home</a>
+					<a class="mx-2 hover:underline" href="/">Home</a>
 					<ChevronRight class="mt-[2.5px] size-4 color" color="#94aa3b8" />
 				</div>
 			{:else}
