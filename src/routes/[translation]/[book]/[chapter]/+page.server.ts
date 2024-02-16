@@ -1,7 +1,7 @@
 import { API_URL } from '$lib';
 import type { PageServerLoad, Actions } from './$types';
 import { superValidate } from "sveltekit-superforms/server";
-import { parallelTranslationsFormSchema } from "$lib/schema";
+import { createParallelTranslationsFormSchema } from "$lib/schema";
 import { fail } from "@sveltejs/kit";
 import { redirect } from '@sveltejs/kit';
 
@@ -47,7 +47,7 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 		paralellTranslationVerses.push(versesnew);
 	}
 	return {
-		form: await superValidate(parallelTranslationsFormSchema),
+		form: await superValidate(createParallelTranslationsFormSchema(parallelTranslations.includes("TOVBSI"), parallelTranslations.includes("KJV"), parallelTranslations.includes("MLSVP"), parallelTranslations.includes("ASV"))),
 		selectedParallelTranslations: parallelTranslations,
 		currentLocation: currentLocation,
 		currentChapter: params.chapter,
@@ -59,13 +59,18 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 
 export const actions: Actions = {
 	default: async (event) => {
-		const form = await superValidate(event, parallelTranslationsFormSchema);
+		let enabledParallelTranslationsString = event.cookies.get("parallelTranslations");
+		let enabledParallelTranslations: string[] = [];
+		if (enabledParallelTranslationsString){
+			enabledParallelTranslations = enabledParallelTranslationsString.split("+").map(obj => obj.toUpperCase());
+		}
+		const formSchema = createParallelTranslationsFormSchema(enabledParallelTranslations.includes("TOVBSI"), enabledParallelTranslations.includes("KJV"), enabledParallelTranslations.includes("MLSVP"), enabledParallelTranslations.includes("ASV"))
+		const form = await superValidate(event, formSchema);
 		if (!form.valid) {
 			return fail(400, {
 				form,
 			});
 		}
-		console.log(form.data);
 		let cookieArray: string[] = [];
 
 		if (form.data.tovbsi) {

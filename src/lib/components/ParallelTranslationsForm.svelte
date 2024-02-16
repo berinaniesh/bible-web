@@ -1,16 +1,17 @@
 <script lang="ts">
     import * as Form from "$lib/components/ui/form";
-    import { parallelTranslationsFormSchema, type ParallelTranslationsFormSchema } from "$lib/schema";
+    import { createParallelTranslationsFormSchema, type ParallelTranslationsFormSchema } from "$lib/schema";
     import type { SuperValidated } from "sveltekit-superforms";
     import { toast } from "svelte-sonner";
     export let form: SuperValidated<ParallelTranslationsFormSchema>;
     export let currentTranslation: string;
     const translations = ["TOVBSI", "KJV", "MLSVP", "ASV"]
-    export let checkedTranslations: string[] = [];    
+    export let checkedTranslations: string[] = [];
+    let formSchema = createParallelTranslationsFormSchema(checkedTranslations.includes("TOVBSI"), checkedTranslations.includes("KJV"), checkedTranslations.includes("MLSVP"), checkedTranslations.includes("ASV"));
   </script>
 
 
-  <Form.Root method="POST" {form} schema={parallelTranslationsFormSchema} let:config>
+  <Form.Root method="POST" {form} schema={formSchema} let:config>
     {#each translations as translation}
         {#if currentTranslation !== translation}
             <Form.Field {config} name={translation.toLowerCase()}>
