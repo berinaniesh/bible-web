@@ -11,7 +11,10 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 	cookies.set('currentBook', params.book, { path: '/', maxAge: 60 * 60 * 24 * 30 });
 	cookies.set('currentChapter', params.chapter, { path: '/', maxAge: 60 * 60 * 24 * 30 });
 	let parallelTranslationsString = cookies.get("parallelTranslations");
-	let parallelTranslations = parallelTranslationsString?.split("+").map(obj => obj.toUpperCase());
+	let parallelTranslations: string[] = [];
+	if (parallelTranslationsString){
+		parallelTranslations = parallelTranslationsString.split("+").map(obj => obj.toUpperCase());
+	}
 	const currentLocation = [
 		{ location: '/', locationName: 'Home', isFinal: false },
 		{
@@ -37,13 +40,20 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 	);
 	const nav = await res.json();
 	const verses = await res2.json();
+	let paralellTranslationVerses = [];
+	for (let i=0; i<parallelTranslations.length; i++) {
+		const res3 = await fetch(`${API_URL}/verses?tr=${parallelTranslations[i]}&b=${params.book.replace("-", " ")}&ch=${params.chapter}`)
+		const versesnew = await res3.json();
+		paralellTranslationVerses.push(versesnew);
+	}
 	return {
 		form: await superValidate(parallelTranslationsFormSchema),
 		selectedParallelTranslations: parallelTranslations,
 		currentLocation: currentLocation,
 		currentChapter: params.chapter,
 		nav: nav,
-		verses: verses
+		verses: verses,
+		parallelTranslationVerses: paralellTranslationVerses
 	};
 };
 

@@ -16,7 +16,7 @@
             <Form.Field {config} name={translation.toLowerCase()}>
                 <Form.Item>
                     {#if checkedTranslations.includes(translation)}
-                        <Form.Checkbox checked={true}/>
+                        <Form.Checkbox checked={true} value="true"/>
                     {:else}
                         <Form.Checkbox />
                     {/if}

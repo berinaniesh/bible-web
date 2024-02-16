@@ -10,12 +10,12 @@
 <div>
 	{#if link}
 		<a href={link}
-			><p class="mb-8 text-center text-sm text-slate-500 hover:cursor-pointer hover:underline">
+			><p class="mb-8 text-center text-sm text-muted-foreground hover:cursor-pointer hover:underline">
 				Continue Reading
 			</p></a
 		>
 	{/if}
-	<ul class="flex text-sm text-slate-500">
+	<ul class="flex text-sm text-muted-foreground">
 		{#each footerElements as footerElement}
 			<a class="mx-4 hover:underline" href={'/' + footerElement.key}
 				><li>{footerElement.text}</li></a

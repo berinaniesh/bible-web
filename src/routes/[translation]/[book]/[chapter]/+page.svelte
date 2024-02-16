@@ -21,8 +21,22 @@
 	{data.bookStruct.book_name}
 	{data.currentChapter}
 </div>
-{#each data.verses as verse}
-	<p class={'my-4 leading-loose ' + data.font}><sup>{verse.verse_number}</sup> {verse.verse}</p>
+{#each data.verses as verse, index}
+	<div>
+		<p class={'my-4 leading-loose ' + data.font}><sup>{verse.verse_number}</sup> {verse.verse}
+			{#if data.parallelTranslationVerses.length !== 0}
+				<sup class="text-muted-foreground">{verse.translation}</sup>
+			{/if}
+		</p>
+		{#each data.parallelTranslationVerses as parallelTranslation}
+			<p class={'my-4 leading-loose ' + data.font}><sup>{parallelTranslation[index].verse_number}</sup> {parallelTranslation[index].verse}
+					<sup class="text-muted-foreground">{parallelTranslation[index].translation}</sup>
+			</p>
+		{/each}
+	</div>
+	{#if data.parallelTranslationVerses.length !== 0}
+		<Separator></Separator>
+	{/if}
 {/each}
 <div class="mx-auto my-12 flex w-full justify-between">
 	{#if data.nav.previous}
