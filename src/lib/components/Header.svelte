@@ -3,6 +3,7 @@
 	import { toggleMode } from 'mode-watcher';
 	import { Sun, Moon, Rows2 } from 'lucide-svelte';
 	import * as Popover from '$lib/components/ui/popover';
+	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
 	import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
 	export let displayParallel: boolean = false;
 	export let currentTranslation: string = '';
@@ -23,17 +24,18 @@
 				<div class="flex">
 					<div class="mx-2 flex flex-col justify-center">
 						{#if displayParallel === true}
-							<Popover.Root portal={null}>
-								<Popover.Trigger asChild let:builder>
+							<DropdownMenu.Root>
+								<DropdownMenu.Trigger asChild let:builder>
 									<Button builders={[builder]} variant="outline"><Rows2 /></Button>
-								</Popover.Trigger>
-								<Popover.Content class="w-72 p-8">
+								</DropdownMenu.Trigger>
+								<DropdownMenu.Content class="w-72 p-8">
 									<div>
 										<p class="text-lg font-bold">Parallel Reading</p>
 										<p class="text-sm text-muted-foreground">
 											Select translations to read together.
 										</p>
 									</div>
+
 									<div>
 										<ParallelTranslationsForm
 											form={parallelSelectionForm}
@@ -41,8 +43,8 @@
 											{checkedTranslations}
 										/>
 									</div>
-								</Popover.Content>
-							</Popover.Root>
+								</DropdownMenu.Content>
+							</DropdownMenu.Root>
 						{/if}
 					</div>
 					<Button variant="outline" class="mx-2 w-12 text-lg" on:click={toggleMode}>
