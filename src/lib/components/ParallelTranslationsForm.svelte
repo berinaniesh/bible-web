@@ -6,7 +6,7 @@
     export let form: SuperValidated<ParallelTranslationsFormSchema>;
     export let currentTranslation: string;
     const translations = ["TOVBSI", "KJV", "MLSVP", "ASV"]
-    export let checkedTranslations: string[] = [];
+    export let checkedTranslations: string[] = [];    
   </script>
 
 
@@ -16,7 +16,7 @@
             <Form.Field {config} name={translation.toLowerCase()}>
                 <Form.Item>
                     {#if checkedTranslations.includes(translation)}
-                        <Form.Checkbox checked={true} value="true"/>
+                        <Form.Checkbox checked={true} />
                     {:else}
                         <Form.Checkbox />
                     {/if}

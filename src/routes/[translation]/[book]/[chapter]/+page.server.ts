@@ -65,7 +65,9 @@ export const actions: Actions = {
 				form,
 			});
 		}
-		let cookieArray = [];
+		console.log(form.data);
+		let cookieArray: string[] = [];
+
 		if (form.data.tovbsi) {
 			cookieArray.push("tovbsi");
 		}
@@ -78,8 +80,9 @@ export const actions: Actions = {
 		if (form.data.asv) {
 			cookieArray.push("asv")
 		}
+
 		const cookie: string = cookieArray.join("+");
 		event.cookies.set('parallelTranslations', cookie, { path: `/${event.params.translation}`, maxAge: 60 * 60 * 24 * 30 });
-	  throw redirect(303, `/${event.params.translation}/${event.params.book}/${event.params.chapter}`);
+		throw redirect(303, `/${event.params.translation}/${event.params.book}/${event.params.chapter}`);
 	},
   }
