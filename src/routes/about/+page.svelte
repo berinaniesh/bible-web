@@ -12,30 +12,9 @@
 
 <h1 class="mb-4 text-xl font-bold">About</h1>
 <ul class="mb-8 ml-4 list-disc leading-8 md:ml-8">
-	<li>
-		This site is built by <a class="underline" target="blank" href="https://berinaniesh.xyz"
-			>Berin Aniesh</a
-		> in the hopes that it will be useful to someone.
-	</li>
-	<li>
-		If you have any comments or feedbacks about the site, <a
-			target="blank"
-			class="underline"
-			href="https://berinaniesh.xyz/contact">let me know</a
-		>.
-	</li>
-	<li>
-		To participate in the development, join the <a target="blank" href="https://t.me/bibleappdesign"
-			><u>telegram group</u></a
-		>.
-	</li>
-	<li>
-		Everything on this site is <a
-			class="underline"
-			target="blank"
-			href="https://github.com/berinaniesh/bible-web">open sourced</a
-		>. Forking and self hosting is not only allowed, but encouraged.
-	</li>
+	{#each data.aboutPoints as point}
+		<li>{@html point}</li>
+	{/each}
 	<li>
 		The backend of this site can be found <a
 			target="blank"
