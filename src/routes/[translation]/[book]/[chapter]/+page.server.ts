@@ -6,9 +6,6 @@ import { fail } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
-	cookies.set('currentTranslation', params.translation, { path: '/', maxAge: 60 * 60 * 24 * 30 });
-	cookies.set('currentBook', params.book, { path: '/', maxAge: 60 * 60 * 24 * 30 });
-	cookies.set('currentChapter', params.chapter, { path: '/', maxAge: 60 * 60 * 24 * 30 });
 	let parallelTranslationsString = cookies.get('parallelTranslations');
 	let parallelTranslations: string[] = [];
 	if (parallelTranslationsString) {
@@ -47,6 +44,9 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 		const versesnew = await res3.json();
 		paralellTranslationVerses.push(versesnew);
 	}
+	cookies.set('currentTranslation', params.translation, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+	cookies.set('currentBook', params.book, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+	cookies.set('currentChapter', params.chapter, { path: '/', maxAge: 60 * 60 * 24 * 30 });
 	return {
 		form: await superValidate(
 			createParallelTranslationsFormSchema(
