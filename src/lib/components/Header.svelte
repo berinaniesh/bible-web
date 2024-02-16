@@ -7,7 +7,8 @@
 	export let displayParallel: boolean = false;
 	export let currentTranslation: string = "";
 	export let parallelSelectionForm: any = "";
-  </script>
+	export let checkedTranslations: string[] = [];
+</script>
 
 <div class="my-1 flex h-12 flex-col justify-center">
 	<div class="grid grid-cols-2">
@@ -34,7 +35,7 @@
 										</p>
 								    </div>
 									<div>
-										<ParallelTranslationsForm form={parallelSelectionForm} currentTranslation={currentTranslation}/>
+										<ParallelTranslationsForm form={parallelSelectionForm} currentTranslation={currentTranslation} checkedTranslations={checkedTranslations}/>
 									</div>
 								</Popover.Content>
 							</Popover.Root>

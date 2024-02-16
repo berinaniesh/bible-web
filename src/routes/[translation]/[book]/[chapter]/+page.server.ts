@@ -4,13 +4,14 @@ import { superValidate } from "sveltekit-superforms/server";
 import { parallelTranslationsFormSchema } from "$lib/schema";
 import { fail } from "@sveltejs/kit";
 import { redirect } from '@sveltejs/kit';
-import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
 
 
 export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 	cookies.set('currentTranslation', params.translation, { path: '/', maxAge: 60 * 60 * 24 * 30 });
 	cookies.set('currentBook', params.book, { path: '/', maxAge: 60 * 60 * 24 * 30 });
 	cookies.set('currentChapter', params.chapter, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+	let parallelTranslationsString = cookies.get("parallelTranslations");
+	let parallelTranslations = parallelTranslationsString?.split("+").map(obj => obj.toUpperCase());
 	const currentLocation = [
 		{ location: '/', locationName: 'Home', isFinal: false },
 		{
@@ -38,6 +39,7 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 	const verses = await res2.json();
 	return {
 		form: await superValidate(parallelTranslationsFormSchema),
+		selectedParallelTranslations: parallelTranslations,
 		currentLocation: currentLocation,
 		currentChapter: params.chapter,
 		nav: nav,
@@ -47,12 +49,27 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 
 export const actions: Actions = {
 	default: async (event) => {
-	  const form = await superValidate(event, parallelTranslationsFormSchema);
-	  if (!form.valid) {
-		return fail(400, {
-		  form,
-		});
-	  }
+		const form = await superValidate(event, parallelTranslationsFormSchema);
+		if (!form.valid) {
+			return fail(400, {
+				form,
+			});
+		}
+		let cookieArray = [];
+		if (form.data.tovbsi) {
+			cookieArray.push("tovbsi");
+		}
+		if (form.data.kjv) {
+			cookieArray.push("kjv")
+		}
+		if (form.data.mlsvp) {
+			cookieArray.push("mlsvp")
+		}
+		if (form.data.asv) {
+			cookieArray.push("asv")
+		}
+		const cookie: string = cookieArray.join("+");
+		event.cookies.set('parallelTranslations', cookie, { path: `/${event.params.translation}`, maxAge: 60 * 60 * 24 * 30 });
 	  throw redirect(303, `/${event.params.translation}/${event.params.book}/${event.params.chapter}`);
 	},
   }
