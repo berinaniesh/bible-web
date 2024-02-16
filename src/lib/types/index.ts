@@ -12,3 +12,13 @@ export type Translation = {
 	license: string;
 	description: string;
 };
+
+export type Verse = {
+	translation: string;
+	book: string;
+	abbreviation: string;
+	book_name: string;
+	chapter: number;
+	verse_number: number;
+	verse: string;
+};

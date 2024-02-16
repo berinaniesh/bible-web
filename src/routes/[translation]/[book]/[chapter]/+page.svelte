@@ -3,8 +3,9 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { ArrowLeft, ArrowRight } from 'lucide-svelte';
-	import { Separator } from "$lib/components/ui/separator";
+	import { Separator } from '$lib/components/ui/separator';
 	import Header from '$lib/components/Header.svelte';
+	import Verse from '$lib/components/Verse.svelte';
 </script>
 
 <svelte:head>
@@ -13,7 +14,12 @@
 	>
 </svelte:head>
 
-<Header displayParallel={true} parallelSelectionForm={data.form} currentTranslation={data.currentTranslation} checkedTranslations={data.selectedParallelTranslations}/>
+<Header
+	displayParallel={true}
+	parallelSelectionForm={data.form}
+	currentTranslation={data.currentTranslation}
+	checkedTranslations={data.selectedParallelTranslations}
+/>
 <Separator />
 
 <Breadcrumb crumbItems={data.currentLocation} />
@@ -23,15 +29,9 @@
 </div>
 {#each data.verses as verse, index}
 	<div>
-		<p class={'my-4 leading-loose ' + data.font}><sup>{verse.verse_number}</sup> {verse.verse}
-			{#if data.parallelTranslationVerses.length !== 0}
-				<sup class="text-muted-foreground">{verse.translation}</sup>
-			{/if}
-		</p>
+		<Verse {verse} parallel={data.parallelTranslationVerses.length !== 0} />
 		{#each data.parallelTranslationVerses as parallelTranslation}
-			<p class={'my-4 leading-loose ' + data.font}><sup>{parallelTranslation[index].verse_number}</sup> {parallelTranslation[index].verse}
-					<sup class="text-muted-foreground">{parallelTranslation[index].translation}</sup>
-			</p>
+			<Verse verse={parallelTranslation[index]} parallel={true} />
 		{/each}
 	</div>
 	{#if data.parallelTranslationVerses.length !== 0}

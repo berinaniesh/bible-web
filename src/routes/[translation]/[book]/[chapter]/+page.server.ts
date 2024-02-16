@@ -1,19 +1,18 @@
 import { API_URL } from '$lib';
 import type { PageServerLoad, Actions } from './$types';
-import { superValidate } from "sveltekit-superforms/server";
-import { createParallelTranslationsFormSchema } from "$lib/schema";
-import { fail } from "@sveltejs/kit";
+import { superValidate } from 'sveltekit-superforms/server';
+import { createParallelTranslationsFormSchema } from '$lib/schema';
+import { fail } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
-
 
 export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 	cookies.set('currentTranslation', params.translation, { path: '/', maxAge: 60 * 60 * 24 * 30 });
 	cookies.set('currentBook', params.book, { path: '/', maxAge: 60 * 60 * 24 * 30 });
 	cookies.set('currentChapter', params.chapter, { path: '/', maxAge: 60 * 60 * 24 * 30 });
-	let parallelTranslationsString = cookies.get("parallelTranslations");
+	let parallelTranslationsString = cookies.get('parallelTranslations');
 	let parallelTranslations: string[] = [];
-	if (parallelTranslationsString){
-		parallelTranslations = parallelTranslationsString.split("+").map(obj => obj.toUpperCase());
+	if (parallelTranslationsString) {
+		parallelTranslations = parallelTranslationsString.split('+').map((obj) => obj.toUpperCase());
 	}
 	const currentLocation = [
 		{ location: '/', locationName: 'Home', isFinal: false },
@@ -41,13 +40,22 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 	const nav = await res.json();
 	const verses = await res2.json();
 	let paralellTranslationVerses = [];
-	for (let i=0; i<parallelTranslations.length; i++) {
-		const res3 = await fetch(`${API_URL}/verses?tr=${parallelTranslations[i]}&b=${params.book.replace("-", " ")}&ch=${params.chapter}`)
+	for (let i = 0; i < parallelTranslations.length; i++) {
+		const res3 = await fetch(
+			`${API_URL}/verses?tr=${parallelTranslations[i]}&b=${params.book.replace('-', ' ')}&ch=${params.chapter}`
+		);
 		const versesnew = await res3.json();
 		paralellTranslationVerses.push(versesnew);
 	}
 	return {
-		form: await superValidate(createParallelTranslationsFormSchema(parallelTranslations.includes("TOVBSI"), parallelTranslations.includes("KJV"), parallelTranslations.includes("MLSVP"), parallelTranslations.includes("ASV"))),
+		form: await superValidate(
+			createParallelTranslationsFormSchema(
+				parallelTranslations.includes('TOVBSI'),
+				parallelTranslations.includes('KJV'),
+				parallelTranslations.includes('MLSVP'),
+				parallelTranslations.includes('ASV')
+			)
+		),
 		selectedParallelTranslations: parallelTranslations,
 		currentLocation: currentLocation,
 		currentChapter: params.chapter,
@@ -59,35 +67,48 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 
 export const actions: Actions = {
 	default: async (event) => {
-		let enabledParallelTranslationsString = event.cookies.get("parallelTranslations");
+		let enabledParallelTranslationsString = event.cookies.get('parallelTranslations');
 		let enabledParallelTranslations: string[] = [];
-		if (enabledParallelTranslationsString){
-			enabledParallelTranslations = enabledParallelTranslationsString.split("+").map(obj => obj.toUpperCase());
+		if (enabledParallelTranslationsString) {
+			enabledParallelTranslations = enabledParallelTranslationsString
+				.split('+')
+				.map((obj) => obj.toUpperCase());
 		}
-		const formSchema = createParallelTranslationsFormSchema(enabledParallelTranslations.includes("TOVBSI"), enabledParallelTranslations.includes("KJV"), enabledParallelTranslations.includes("MLSVP"), enabledParallelTranslations.includes("ASV"))
+		const formSchema = createParallelTranslationsFormSchema(
+			enabledParallelTranslations.includes('TOVBSI'),
+			enabledParallelTranslations.includes('KJV'),
+			enabledParallelTranslations.includes('MLSVP'),
+			enabledParallelTranslations.includes('ASV')
+		);
 		const form = await superValidate(event, formSchema);
 		if (!form.valid) {
 			return fail(400, {
-				form,
+				form
 			});
 		}
 		let cookieArray: string[] = [];
 
 		if (form.data.tovbsi) {
-			cookieArray.push("tovbsi");
+			cookieArray.push('tovbsi');
 		}
 		if (form.data.kjv) {
-			cookieArray.push("kjv")
+			cookieArray.push('kjv');
 		}
 		if (form.data.mlsvp) {
-			cookieArray.push("mlsvp")
+			cookieArray.push('mlsvp');
 		}
 		if (form.data.asv) {
-			cookieArray.push("asv")
+			cookieArray.push('asv');
 		}
 
-		const cookie: string = cookieArray.join("+");
-		event.cookies.set('parallelTranslations', cookie, { path: `/${event.params.translation}`, maxAge: 60 * 60 * 24 * 30 });
-		throw redirect(303, `/${event.params.translation}/${event.params.book}/${event.params.chapter}`);
-	},
-  }
+		const cookie: string = cookieArray.join('+');
+		event.cookies.set('parallelTranslations', cookie, {
+			path: `/${event.params.translation}`,
+			maxAge: 60 * 60 * 24 * 30
+		});
+		throw redirect(
+			303,
+			`/${event.params.translation}/${event.params.book}/${event.params.chapter}`
+		);
+	}
+};

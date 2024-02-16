@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let data;
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import { Separator } from "$lib/components/ui/separator";
+	import { Separator } from '$lib/components/ui/separator';
 	import Header from '$lib/components/Header.svelte';
 </script>
 
@@ -13,7 +13,8 @@
 <h1 class="mb-4 text-xl font-bold">About</h1>
 <ul class="mb-8 ml-4 list-disc leading-8 md:ml-8">
 	<li>
-		This site is built by <a class="underline" target="blank" href="https://berinaniesh.xyz">Berin Aniesh</a
+		This site is built by <a class="underline" target="blank" href="https://berinaniesh.xyz"
+			>Berin Aniesh</a
 		> in the hopes that it will be useful to someone.
 	</li>
 	<li>

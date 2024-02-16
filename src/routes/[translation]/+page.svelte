@@ -2,7 +2,7 @@
 	export let data;
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { Separator } from "$lib/components/ui/separator";
+	import { Separator } from '$lib/components/ui/separator';
 	import Header from '$lib/components/Header.svelte';
 </script>
 

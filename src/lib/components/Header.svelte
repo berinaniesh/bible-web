@@ -2,11 +2,11 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { toggleMode } from 'mode-watcher';
 	import { Sun, Moon, Rows2 } from 'lucide-svelte';
-	import * as Popover from "$lib/components/ui/popover";
+	import * as Popover from '$lib/components/ui/popover';
 	import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
 	export let displayParallel: boolean = false;
-	export let currentTranslation: string = "";
-	export let parallelSelectionForm: any = "";
+	export let currentTranslation: string = '';
+	export let parallelSelectionForm: any = '';
 	export let checkedTranslations: string[] = [];
 </script>
 
@@ -25,23 +25,27 @@
 						{#if displayParallel === true}
 							<Popover.Root portal={null}>
 								<Popover.Trigger asChild let:builder>
-								<Button builders={[builder]} variant="outline"><Rows2 /></Button>
+									<Button builders={[builder]} variant="outline"><Rows2 /></Button>
 								</Popover.Trigger>
 								<Popover.Content class="w-72 p-8">
 									<div>
 										<p class="text-lg font-bold">Parallel Reading</p>
 										<p class="text-sm text-muted-foreground">
-										Select translations to read together.
+											Select translations to read together.
 										</p>
-								    </div>
+									</div>
 									<div>
-										<ParallelTranslationsForm form={parallelSelectionForm} currentTranslation={currentTranslation} checkedTranslations={checkedTranslations}/>
+										<ParallelTranslationsForm
+											form={parallelSelectionForm}
+											{currentTranslation}
+											{checkedTranslations}
+										/>
 									</div>
 								</Popover.Content>
 							</Popover.Root>
 						{/if}
 					</div>
-					<Button variant="outline" class="w-12 text-lg mx-2" on:click={toggleMode}>
+					<Button variant="outline" class="mx-2 w-12 text-lg" on:click={toggleMode}>
 						<Sun
 							class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
 						/>

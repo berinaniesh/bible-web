@@ -3,7 +3,7 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import TranslationCard from '$lib/components/TranslationCard.svelte';
-	import { Separator } from "$lib/components/ui/separator";
+	import { Separator } from '$lib/components/ui/separator';
 	import Header from '$lib/components/Header.svelte';
 </script>
 
@@ -11,7 +11,7 @@
 	<title>The Bible</title>
 </svelte:head>
 
-<Header displayParallel={false} parallelSelectionForm={""} currentTranslation={""}/>
+<Header displayParallel={false} parallelSelectionForm={''} currentTranslation={''} />
 <Separator />
 <div class="w-full">
 	<Breadcrumb crumbItems={data.currentLocation} />

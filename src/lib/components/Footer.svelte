@@ -2,7 +2,7 @@
 	export let link: string | undefined;
 	const footerElements = [
 		{ key: 'about', text: 'About' },
-		{ key: 'help', text: 'Help'},
+		{ key: 'help', text: 'Help' },
 		{ key: 'changelog', text: 'Changelog' }
 	];
 </script>
@@ -10,7 +10,9 @@
 <div>
 	{#if link}
 		<a href={link}
-			><p class="mb-8 text-center text-sm text-muted-foreground hover:cursor-pointer hover:underline">
+			><p
+				class="mb-8 text-center text-sm text-muted-foreground hover:cursor-pointer hover:underline"
+			>
 				Continue Reading
 			</p></a
 		>
