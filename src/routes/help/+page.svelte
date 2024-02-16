@@ -5,7 +5,7 @@
 	import Header from '$lib/components/Header.svelte';
 </script>
 
-<Header displayParallel={false} parallelSelectionForm={""} currentTranslation={""}/>
+<Header />
 <Separator />
 
 <Breadcrumb crumbItems={data.currentLocation} />

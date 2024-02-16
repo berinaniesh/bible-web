@@ -11,7 +11,7 @@
 	<title>{data.bookStruct.book_name} • {data.currentTranslation} • Bible</title>
 </svelte:head>
 
-<Header displayParallel={false} parallelSelectionForm={""} currentTranslation={""}/>
+<Header />
 <Separator />
 <div>
 	<Breadcrumb crumbItems={data.currentLocation} />

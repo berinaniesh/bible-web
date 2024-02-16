@@ -3,6 +3,7 @@ import type { PageServerLoad, Actions } from './$types';
 import { superValidate } from "sveltekit-superforms/server";
 import { parallelTranslationsFormSchema } from "$lib/schema";
 import { fail } from "@sveltejs/kit";
+import { redirect } from '@sveltejs/kit';
 import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
 
 
@@ -52,8 +53,6 @@ export const actions: Actions = {
 		  form,
 		});
 	  }
-	  return {
-		success: "true"
-	  };
+	  throw redirect(303, `/${event.params.translation}/${event.params.book}/${event.params.chapter}`);
 	},
   }

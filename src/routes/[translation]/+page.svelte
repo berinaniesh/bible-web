@@ -10,7 +10,7 @@
 	<title>{data.currentTranslation} • Bible</title>
 </svelte:head>
 
-<Header displayParallel={false} parallelSelectionForm={""} currentTranslation={""}/>
+<Header />
 <Separator />
 <div class="w-full">
 	<Breadcrumb crumbItems={data.currentLocation} />

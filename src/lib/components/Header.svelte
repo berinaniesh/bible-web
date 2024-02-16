@@ -4,10 +4,9 @@
 	import { Sun, Moon, Rows2 } from 'lucide-svelte';
 	import * as Popover from "$lib/components/ui/popover";
 	import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
-	export let displayParallel: boolean;
-	export let currentTranslation: string;
-	export let parallelSelectionForm: any;
-
+	export let displayParallel: boolean = false;
+	export let currentTranslation: string = "";
+	export let parallelSelectionForm: any = "";
   </script>
 
 <div class="my-1 flex h-12 flex-col justify-center">
