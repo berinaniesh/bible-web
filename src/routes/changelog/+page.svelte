@@ -10,7 +10,8 @@
 <Breadcrumb crumbItems={data.currentLocation} />
 <h1 class="mb-4 text-xl font-bold">About</h1>
 <ul class="mb-8 ml-4 list-disc leading-8 md:ml-8">
-	<li>Feb 15, 2024 - New UI deployed</li>
+	<li>Feb 16, 2024 - Finish parallel reading feature</li>
+	<li>Feb 14, 2024 - New UI deployed</li>
 	<li>Feb 10, 2024 - Started working on the new UI (complete rewrite, same structure)</li>
 	<li>Jan 10, 2024 - Add breadcrumbs for navigation.</li>
 	<li>Jan 10, 2024 - Add "continue reading" functionality.</li>
