@@ -19,12 +19,12 @@
 	{/if}
 	<ul class="flex text-sm text-muted-foreground">
 		{#each footerElements as footerElement}
-			<a class="mx-4 hover:underline" href={'/' + footerElement.key}
-				><li>{footerElement.text}</li></a
-			>
+			<li class="mx-4 hover:underline">
+				<a href={'/' + footerElement.key}>{footerElement.text}</a>
+			</li>
 		{/each}
-		<a class="mx-4 hover:underline" target="blank" href="https://github.com/berinaniesh/bible-web"
-			><li>Source</li></a
-		>
+		<li class="mx-4 hover:underline">
+			<a target="blank" href="https://github.com/berinaniesh/bible-web">Source</a>
+		</li>
 	</ul>
 </div>
