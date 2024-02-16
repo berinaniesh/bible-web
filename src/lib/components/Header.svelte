@@ -13,7 +13,7 @@
 <div class="my-1 flex h-12 flex-col justify-center">
 	<div class="grid grid-cols-2">
 		<div class="flex">
-			<a href="/" class="flex flex-col justify-center text-2xl font-bold"><p>The Bible</p></a>
+			<a data-sveltekit-reload href="/" class="flex flex-col justify-center text-2xl font-bold"><p>The Bible</p></a>
 		</div>
 		<div class="flex justify-between text-3xl">
 			<div>
