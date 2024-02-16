@@ -3,7 +3,7 @@
 	import { toggleMode } from 'mode-watcher';
 	import { Sun, Moon, Rows2 } from 'lucide-svelte';
 	import * as Popover from '$lib/components/ui/popover';
-	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
 	export let displayParallel: boolean = false;
 	export let currentTranslation: string = '';
