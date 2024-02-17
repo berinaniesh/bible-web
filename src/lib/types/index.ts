@@ -22,3 +22,8 @@ export type Verse = {
 	verse_number: number;
 	verse: string;
 };
+
+export type Changelog = {
+	date: string;
+	text: string;
+};

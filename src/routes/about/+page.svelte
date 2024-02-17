@@ -15,38 +15,4 @@
 	{#each data.aboutPoints as point}
 		<li>{@html point}</li>
 	{/each}
-	<li>
-		The backend of this site can be found <a
-			target="blank"
-			class="underline"
-			href="https://api.bible.berinaniesh.xyz/docs">here</a
-		>
-		and the source for the same can be found
-		<a class="underline" target="blank" href="https://github.com/berinaniesh/bible-api">here</a>.
-	</li>
-	<li>
-		No guarantees are made for the availability, reliability or correctness of the frontend or the
-		backend.
-	</li>
-	<li>
-		The source of Bible translations can be found at <a
-			class="underline"
-			target="blank"
-			href="https://github.com/tfbf">TFBF’s GitHub Repo</a
-		>.
-	</li>
-	<li>Bible requests welcome as long as the translation requested is in the public domain.</li>
-	<li>
-		Bible translations in Bengali, Kannada, Punjabi, Hindi, Telugu, Odia, Gujarati, Assamese and
-		Russian are available. If you know any of the above languages and can spare some time (to fix
-		spelling mistakes, separate grouped verses into individual verses, etc), <a
-			class="underline"
-			target="blank"
-			href="https://berinaniesh.xyz/contact">get in touch</a
-		>.
-	</li>
-	<li>
-		Due to the structure of the database and the backend, adding the Apocrypha is not possible (in
-		any translation).
-	</li>
 </ul>
