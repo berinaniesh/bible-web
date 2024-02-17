@@ -35,7 +35,7 @@
 			</Form.Field>
 		{/if}
 	{/each}
-	<DropdownMenu.Item>
-		<Form.Button on:click={() => toast.success('Preference saved')}>Submit</Form.Button>
+	<DropdownMenu.Item class="my-2 data-[highlighted]:bg-background">
+		<Form.Button class="absolute end-4 my-12" on:click={() => toast.success('Preference saved')}>Submit</Form.Button>
 	</DropdownMenu.Item>
 </Form.Root>

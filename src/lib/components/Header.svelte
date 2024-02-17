@@ -28,10 +28,10 @@
 								<DropdownMenu.Trigger asChild let:builder>
 									<Button builders={[builder]} variant="outline"><Rows2 /></Button>
 								</DropdownMenu.Trigger>
-								<DropdownMenu.Content class="w-72 p-8">
+								<DropdownMenu.Content class="w-64 p-8">
 									<div>
 										<p class="text-lg font-bold">Parallel Reading</p>
-										<p class="text-sm text-muted-foreground">
+										<p class="text-sm mb-2 text-muted-foreground">
 											Select translations to read together.
 										</p>
 									</div>
