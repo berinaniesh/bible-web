@@ -6,6 +6,7 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import Header from '$lib/components/Header.svelte';
 	import Verse from '$lib/components/Verse.svelte';
+	import type { Verse as VerseType } from "$lib/types";
 	import CopyDrawer from '$lib/components/CopyDrawer.svelte';
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
@@ -13,6 +14,16 @@
 	const copiedVerses = writable();
 	copiedVerses.set([]);
 	setContext('copiedVerses', copiedVerses);
+	let isCopyDrawerOpen: boolean = false;
+	let selectedVerses: VerseType[];
+	copiedVerses.subscribe((verseArray: VerseType[]) => {
+		if (verseArray.length !== 0) {
+			isCopyDrawerOpen =  true
+		} else {
+			isCopyDrawerOpen = false
+		}
+		selectedVerses = verseArray;
+	})
 </script>
 
 <svelte:head>
@@ -72,6 +83,8 @@
 	{/if}
 </div>
 
-<div class="fixed bottom-0 w-full max-w-screen-md">
+{#if isCopyDrawerOpen}
+<div class="fixed bottom-0">
 	<CopyDrawer />
 </div>
+{/if}

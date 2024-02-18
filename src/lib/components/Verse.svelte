@@ -22,11 +22,24 @@
 		}
 		copiedVerses.set(oldArray)
 	}
+	let selected = false;
+	copiedVerses.subscribe((vs) => {
+		if (vs.filter(v => v.verse === verse.verse).length !== 0) {
+			selected = true
+		}
+		else {
+			selected = false
+		}
+	})
 </script>
 
-<p on:dblclick={()=>{addToCopiedArray(verse)}} class={'my-4 leading-loose ' + font}>
+<p on:click={()=>{addToCopiedArray(verse)}} class={'my-4 decoration-dotted leading-loose ' + font}>
 	<sup>{verse.verse_number}</sup>
-	{verse.verse}
+	{#if selected}
+		<b class="underline decoration-dotted font-normal">{verse.verse}</b>
+	{:else}
+		{verse.verse}
+	{/if}
 	{#if parallel}
 		<sup class="text-muted-foreground">{verse.translation}</sup>
 	{/if}

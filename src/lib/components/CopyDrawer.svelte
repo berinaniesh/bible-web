@@ -4,6 +4,6 @@
     const copiedVerses: Verse[] = getContext('copiedVerses');
 </script>
 
-<div class="bg-primary-foreground h-64 rounded-lg rounded-b-none shadow">
+<div class="bg-background border h-64 rounded-lg rounded-b-none shadow p-8">
     boo
 </div>
