@@ -7,9 +7,9 @@
 	import Header from '$lib/components/Header.svelte';
 	import Verse from '$lib/components/Verse.svelte';
 	import type { Verse as VerseType } from "$lib/types";
-	import CopyDrawer from '$lib/components/CopyDrawer.svelte';
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
+	import * as Sheet from '$lib/components/ui/sheetmod/index.js';
 
 	const copiedVerses = writable();
 	copiedVerses.set([]);
@@ -83,8 +83,14 @@
 	{/if}
 </div>
 
-{#if isCopyDrawerOpen}
-<div class="fixed bottom-0">
-	<CopyDrawer />
-</div>
-{/if}
+<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false}>
+	<Sheet.Content side="right">
+		<Sheet.Header>
+			<Sheet.Title>Are you sure absolutely sure?</Sheet.Title>
+			<Sheet.Description>
+			  This action cannot be undone. This will permanently delete your account
+			  and remove your data from our servers.
+			</Sheet.Description>
+		  </Sheet.Header>
+		</Sheet.Content>
+</Sheet.Root>
