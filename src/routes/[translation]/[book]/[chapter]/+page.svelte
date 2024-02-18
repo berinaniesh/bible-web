@@ -88,7 +88,7 @@
 			<Sheet.Header>
 				<Sheet.Title>Copy Verses</Sheet.Title>
 				<Sheet.Description>
-					Add to this drawer by clicking on the verse and click the button below to copy.
+					Add to this drawer by clicking on the verse and click the button below.
 				</Sheet.Description>
 			</Sheet.Header>
 			<ul class="list-disc m-4">
