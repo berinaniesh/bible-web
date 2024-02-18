@@ -83,14 +83,19 @@
 	{/if}
 </div>
 
-<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false}>
+<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false} >
 	<Sheet.Content side="right">
-		<Sheet.Header>
-			<Sheet.Title>Are you sure absolutely sure?</Sheet.Title>
-			<Sheet.Description>
-			  This action cannot be undone. This will permanently delete your account
-			  and remove your data from our servers.
-			</Sheet.Description>
-		  </Sheet.Header>
+			<Sheet.Header>
+				<Sheet.Title>Copy Verses</Sheet.Title>
+				<Sheet.Description>
+					Add to this drawer by clicking on the verse and click the button below to copy.
+				</Sheet.Description>
+			</Sheet.Header>
+			<ul class="list-disc m-4">
+				{#each selectedVerses as selectedVerse}
+					<li>{selectedVerse.book} {selectedVerse.chapter}:{selectedVerse.verse_number} ({selectedVerse.translation})</li>
+				{/each}
+			</ul>
+			<Button>Copy</Button>
 		</Sheet.Content>
 </Sheet.Root>
