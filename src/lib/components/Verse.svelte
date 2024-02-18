@@ -10,9 +10,21 @@
 	} else {
 		font = 'font-sans';
 	}
+	import { getContext } from 'svelte';
+	import { get } from 'svelte/store';
+	const copiedVerses: any = getContext('copiedVerses');
+	function addToCopiedArray(verse: Verse) {
+		let oldArray: Verse[] = get(copiedVerses);
+		if (!oldArray.includes(verse)) {
+			oldArray = [...oldArray, verse]
+		} else {
+			oldArray = oldArray.filter(obj => obj.verse != verse.verse)
+		}
+		copiedVerses.set(oldArray)
+	}
 </script>
 
-<p class={'my-4 leading-loose ' + font}>
+<p on:dblclick={()=>{addToCopiedArray(verse)}} class={'my-4 leading-loose ' + font}>
 	<sup>{verse.verse_number}</sup>
 	{verse.verse}
 	{#if parallel}

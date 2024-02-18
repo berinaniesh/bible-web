@@ -6,6 +6,13 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import Header from '$lib/components/Header.svelte';
 	import Verse from '$lib/components/Verse.svelte';
+	import CopyDrawer from '$lib/components/CopyDrawer.svelte';
+	import { setContext } from 'svelte';
+	import { writable } from 'svelte/store';
+
+	const copiedVerses = writable();
+	copiedVerses.set([]);
+	setContext('copiedVerses', copiedVerses);
 </script>
 
 <svelte:head>
@@ -63,4 +70,8 @@
 	{:else}
 		<div></div>
 	{/if}
+</div>
+
+<div class="fixed bottom-0 w-full max-w-screen-md">
+	<CopyDrawer />
 </div>
