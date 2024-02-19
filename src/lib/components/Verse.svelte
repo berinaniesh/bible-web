@@ -16,27 +16,31 @@
 	function addToCopiedArray(verse: Verse) {
 		let oldArray: Verse[] = get(copiedVerses);
 		if (!oldArray.includes(verse)) {
-			oldArray = [...oldArray, verse]
+			oldArray = [...oldArray, verse];
 		} else {
-			oldArray = oldArray.filter(obj => obj.verse != verse.verse)
+			oldArray = oldArray.filter((obj) => obj.verse != verse.verse);
 		}
-		copiedVerses.set(oldArray)
+		copiedVerses.set(oldArray);
 	}
 	let selected = false;
 	copiedVerses.subscribe((vs) => {
-		if (vs.filter(v => v.verse === verse.verse).length !== 0) {
-			selected = true
+		if (vs.filter((v) => v.verse === verse.verse).length !== 0) {
+			selected = true;
+		} else {
+			selected = false;
 		}
-		else {
-			selected = false
-		}
-	})
+	});
 </script>
 
-<p on:click={()=>{addToCopiedArray(verse)}} class={'my-4 decoration-dotted leading-loose ' + font}>
+<p
+	on:click={() => {
+		addToCopiedArray(verse);
+	}}
+	class={'my-4 leading-loose decoration-dotted ' + font}
+>
 	<sup>{verse.verse_number}</sup>
 	{#if selected}
-		<b class="underline decoration-dotted font-normal">{verse.verse}</b>
+		<b class="font-normal underline decoration-dotted">{verse.verse}</b>
 	{:else}
 		{verse.verse}
 	{/if}

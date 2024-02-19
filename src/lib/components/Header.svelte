@@ -31,7 +31,7 @@
 								<DropdownMenu.Content class="w-64 p-8">
 									<div>
 										<p class="text-lg font-bold">Parallel Reading</p>
-										<p class="text-sm mb-2 text-muted-foreground">
+										<p class="mb-2 text-sm text-muted-foreground">
 											Select translations to read together.
 										</p>
 									</div>
