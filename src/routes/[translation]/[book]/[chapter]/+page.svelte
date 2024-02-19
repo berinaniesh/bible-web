@@ -10,6 +10,8 @@
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 	import * as Sheet from '$lib/components/ui/sheetmod/index.js';
+	import { browser } from '$app/environment';
+	import { toast } from 'svelte-sonner';
 
 	const copiedVerses = writable();
 	copiedVerses.set([]);
@@ -25,12 +27,37 @@
 		selectedVerses = verseArray;
 	})
 
-	function convertCommaToDash(str: string) {
+function convertCommaToDash(input: string) {
+	const numbers = input.split(',').map(Number);
+    let condensedRanges = [];
+    let startRange = numbers[0];
+    let endRange = numbers[0];
 
-		return str.substring(0, str.length-1)
-	} 
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] === endRange + 1) {
+            endRange = numbers[i];
+        } else {
+            if (startRange === endRange) {
+                condensedRanges.push(startRange.toString());
+            } else {
+                condensedRanges.push(startRange + '-' + endRange);
+            }
+            startRange = numbers[i];
+            endRange = numbers[i];
+        }
+    }
 
-	function getVerseNumbers(giveCopyString: boolean) {
+    if (startRange === endRange) {
+        condensedRanges.push(startRange.toString());
+    } else {
+        condensedRanges.push(startRange + '-' + endRange);
+    }
+	condensedRanges.pop()
+    return condensedRanges.join(',');
+}
+
+function getVerseNumbers(giveCopyString: boolean) {
+	if (browser) {
 		const groupedVerses = selectedVerses.reduce((accumulator, verse) => {
 			const tra = verse.translation;
 			if (!accumulator[tra]) {
@@ -40,7 +67,7 @@
 			return accumulator;
 		}, {});
 		for (const tra in groupedVerses) {
-    		groupedVerses[tra].sort((a, b) => a.verse_number - b.verse_number);
+			groupedVerses[tra].sort((a, b) => a.verse_number - b.verse_number);
 		}
 		let chapterStrings: string[] = [];
 		let chapterVerses: string[] = [];
@@ -54,9 +81,20 @@
 			const mantissa = convertCommaToDash(currentChapterString.split(":")[1]) + " " + "(" + tra + ")";
 			currentChapterString = currentChapterString.split(":")[0] + ":" + mantissa;
 			chapterStrings.push(currentChapterString);
-			chapterVerses.push(currentChapterVerse.substring(0, currentChapterVerse.length-1));
+			chapterVerses.push(currentChapterVerse);
 		}
+
+		let finalString = ""
+		for (let i=0; i<chapterStrings.length; i++) {
+			finalString += chapterStrings[i];
+			finalString += "\n\n";
+			finalString += chapterVerses[i];
+		}
+		navigator.clipboard.writeText(finalString.substring(0, finalString.length-1));
 	}
+	toast.success('Copied');
+	copiedVerses.set([]);
+}
 
 </script>
 
