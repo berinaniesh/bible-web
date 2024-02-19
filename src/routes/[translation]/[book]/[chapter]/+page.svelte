@@ -24,6 +24,40 @@
 		}
 		selectedVerses = verseArray;
 	})
+
+	function convertCommaToDash(str: string) {
+
+		return str.substring(0, str.length-1)
+	} 
+
+	function getVerseNumbers(giveCopyString: boolean) {
+		const groupedVerses = selectedVerses.reduce((accumulator, verse) => {
+			const tra = verse.translation;
+			if (!accumulator[tra]) {
+				accumulator[tra] = [];
+			}
+			accumulator[tra].push(verse);
+			return accumulator;
+		}, {});
+		for (const tra in groupedVerses) {
+    		groupedVerses[tra].sort((a, b) => a.verse_number - b.verse_number);
+		}
+		let chapterStrings: string[] = [];
+		let chapterVerses: string[] = [];
+		for (const tra in groupedVerses) {
+			let currentChapterString = `${groupedVerses[tra][0].book_name} ${groupedVerses[tra][0].chapter}:`
+			let currentChapterVerse = "";
+			for (let i=0; i<groupedVerses[tra].length; i++) {
+				currentChapterString += (groupedVerses[tra][i].verse_number + ",")
+				currentChapterVerse += `${groupedVerses[tra][i].verse_number}. ${groupedVerses[tra][i].verse}\n\n`;
+			}
+			const mantissa = convertCommaToDash(currentChapterString.split(":")[1]) + " " + "(" + tra + ")";
+			currentChapterString = currentChapterString.split(":")[0] + ":" + mantissa;
+			chapterStrings.push(currentChapterString);
+			chapterVerses.push(currentChapterVerse.substring(0, currentChapterVerse.length-1));
+		}
+	}
+
 </script>
 
 <svelte:head>
@@ -96,6 +130,6 @@
 					<li>{selectedVerse.book} {selectedVerse.chapter}:{selectedVerse.verse_number} ({selectedVerse.translation})</li>
 				{/each}
 			</ul>
-			<Button>Copy</Button>
+			<Button on:click={() => {getVerseNumbers(false)}}>Copy</Button>
 		</Sheet.Content>
 </Sheet.Root>
