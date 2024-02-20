@@ -7,7 +7,7 @@ export const load: PageServerLoad = () => {
 		{ location: '', locationName: 'Changelog', isFinal: true }
 	];
 	const changelog: Changelog[] = [
-		{ date: 'Feb 19, 2024', text: 'Copy verses feature live'},
+		{ date: 'Feb 19, 2024', text: 'Copy verses feature live.'},
 		{ date: 'Feb 16, 2024', text: 'Finish parallel reading feature.' },
 		{ date: 'Feb 14, 2024', text: 'New UI deployed.' },
 		{
@@ -17,7 +17,7 @@ export const load: PageServerLoad = () => {
 		{ date: 'Jan 10, 2024', text: 'Add breadcrumbs for navigation.' },
 		{ date: 'Jan 10, 2024', text: `Add "Continue reading" functionality.` },
 		{ date: 'Jan 10, 2024', text: 'Move fetch logic to server side.' },
-		{ date: 'Dec 30, 2023', text: 'Add changelog to about page.' },
+		{ date: 'Dec 30, 2023', text: 'Add changelog and about pages.' },
 		{ date: 'Nov 16, 2023', text: 'Add sitemap and robots.txt.' },
 		{ date: 'Nov 8, 2023', text: 'Add search functionality to the backend.' },
 		{ date: 'Nov 5, 2023', text: 'Add next / previous buttons to the UI.' },
