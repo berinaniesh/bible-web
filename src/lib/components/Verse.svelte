@@ -23,8 +23,8 @@
 		copiedVerses.set(oldArray);
 	}
 	let selected = false;
-	copiedVerses.subscribe((vs) => {
-		if (vs.filter((v) => v.verse === verse.verse).length !== 0) {
+	copiedVerses.subscribe((vs: Verse[]) => {
+		if (vs.filter((v: Verse) => v.verse === verse.verse).length !== 0) {
 			selected = true;
 		} else {
 			selected = false;

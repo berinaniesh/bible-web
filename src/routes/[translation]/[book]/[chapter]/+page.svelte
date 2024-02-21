@@ -18,7 +18,7 @@
 	setContext('copiedVerses', copiedVerses);
 	let isCopyDrawerOpen: boolean = false;
 	let selectedVerses: VerseType[];
-	copiedVerses.subscribe((verseArray: VerseType[]) => {
+	copiedVerses.subscribe((verseArray: any) => {
 		if (verseArray.length !== 0) {
 			isCopyDrawerOpen = true;
 		} else {
@@ -60,7 +60,7 @@
 
 	function getVerseNumbers() {
 		if (browser) {
-			const groupedVerses = selectedVerses.reduce((accumulator, verse) => {
+			const groupedVerses = selectedVerses.reduce((accumulator: any, verse) => {
 				const tra = verse.translation;
 				if (!accumulator[tra]) {
 					accumulator[tra] = [];
@@ -69,7 +69,7 @@
 				return accumulator;
 			}, {});
 			for (const tra in groupedVerses) {
-				groupedVerses[tra].sort((a, b) => a.verse_number - b.verse_number);
+				groupedVerses[tra].sort((a: any, b: any) => a.verse_number - b.verse_number);
 			}
 			let chapterStrings: string[] = [];
 			let chapterVerses: string[] = [];
