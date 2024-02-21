@@ -30,6 +30,10 @@
 	});
 
 	const isDesktop = mediaQuery('(min-width: 768px)');
+	let drawerSide: string = "bottom"
+	if (isDesktop) {
+		drawerSide = "right"
+	}
 
 	function convertCommaToDash(input: string) {
 		const numbers = input.split(',').map(Number);
@@ -60,7 +64,7 @@
 		return condensedRanges.join(',');
 	}
 
-	function getVerseNumbers(giveCopyString: boolean) {
+	function getVerseNumbers() {
 		if (browser) {
 			const groupedVerses = selectedVerses.reduce((accumulator, verse) => {
 				const tra = verse.translation;
@@ -163,56 +167,26 @@
 	<div class="h-80"></div>
 {/if}
 
-{#if $isDesktop}
-	<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false}>
-		<Sheet.Content side="right">
-			<div class="mx-auto max-w-screen-md">
-				<Sheet.Header>
-					<Sheet.Title>Copy Verses</Sheet.Title>
-					<Sheet.Description>
-						Add to this drawer by clicking on the verse and click the button below.
-					</Sheet.Description>
-				</Sheet.Header>
-				<ul class="m-4 list-disc">
-					{#each selectedVerses as selectedVerse}
-						<li>
-							{selectedVerse.book}
-							{selectedVerse.chapter}:{selectedVerse.verse_number} ({selectedVerse.translation})
-						</li>
-					{/each}
-				</ul>
-				<Button
-					on:click={() => {
-						getVerseNumbers(false);
-					}}>Copy</Button
-				>
-			</div>
-		</Sheet.Content>
-	</Sheet.Root>
-{:else}
-	<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false}>
-		<Sheet.Content side="bottom">
-			<div class="mx-auto max-w-screen-md">
-				<Sheet.Header>
-					<Sheet.Title>Copy Verses</Sheet.Title>
-					<Sheet.Description>
-						Add to this drawer by clicking on the verse and click the button below.
-					</Sheet.Description>
-				</Sheet.Header>
-				<ul class="m-4 list-disc">
-					{#each selectedVerses as selectedVerse}
-						<li>
-							{selectedVerse.book}
-							{selectedVerse.chapter}:{selectedVerse.verse_number} ({selectedVerse.translation})
-						</li>
-					{/each}
-				</ul>
-				<Button
-					on:click={() => {
-						getVerseNumbers(false);
-					}}>Copy</Button
-				>
-			</div>
-		</Sheet.Content>
-	</Sheet.Root>
-{/if}
+<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false}>
+	<Sheet.Content side={drawerSide}>
+		<div class="mx-auto max-w-screen-md">
+			<Sheet.Header>
+				<Sheet.Title>Copy Verses</Sheet.Title>
+				<Sheet.Description>
+					Add to this drawer by clicking on the verse and click the button below.
+				</Sheet.Description>
+			</Sheet.Header>
+			<ul class="m-4 list-disc">
+				{#each selectedVerses as selectedVerse}
+					<li>
+						{selectedVerse.book}
+						{selectedVerse.chapter}:{selectedVerse.verse_number} ({selectedVerse.translation})
+					</li>
+				{/each}
+			</ul>
+			<Button
+				on:click={getVerseNumbers}>Copy</Button
+			>
+		</div>
+	</Sheet.Content>
+</Sheet.Root>
