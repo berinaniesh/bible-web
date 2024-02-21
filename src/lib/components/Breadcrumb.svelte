@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { BreadCrumb } from '$lib/types';
 	export let crumbItems: BreadCrumb[];
-	import { Home, ChevronRight } from 'lucide-svelte';
+	import Home from 'lucide-svelte/icons/home';
+	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 </script>
 
 <div class="my-6 flex h-8 flex-col justify-center">

@@ -1,8 +1,9 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { toggleMode } from 'mode-watcher';
-	import { Sun, Moon, Rows2 } from 'lucide-svelte';
-	import * as Popover from '$lib/components/ui/popover';
+	import Sun from 'lucide-svelte/icons/sun';
+	import Moon from 'lucide-svelte/icons/moon';
+	import Rows2 from 'lucide-svelte/icons/rows-2';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
 	export let displayParallel: boolean = false;

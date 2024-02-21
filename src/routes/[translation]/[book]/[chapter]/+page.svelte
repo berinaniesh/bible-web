@@ -2,7 +2,8 @@
 	export let data;
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { ArrowLeft, ArrowRight } from 'lucide-svelte';
+	import ArrowRight from 'lucide-svelte/icons/arrow-right';
+	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
 	import { Separator } from '$lib/components/ui/separator';
 	import Header from '$lib/components/Header.svelte';
 	import Verse from '$lib/components/Verse.svelte';
@@ -28,7 +29,7 @@
 		selectedVerses = verseArray;
 	});
 
-	const isDesktop = mediaQuery("(min-width: 768px)");
+	const isDesktop = mediaQuery('(min-width: 768px)');
 
 	function convertCommaToDash(input: string) {
 		const numbers = input.split(',').map(Number);
@@ -158,7 +159,7 @@
 	{/if}
 </div>
 
-{#if isCopyDrawerOpen && $isDesktop==false}
+{#if isCopyDrawerOpen && $isDesktop == false}
 	<div class="h-80"></div>
 {/if}
 

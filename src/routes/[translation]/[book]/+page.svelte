@@ -2,7 +2,8 @@
 	export let data;
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { ArrowRight, ArrowLeft } from 'lucide-svelte';
+	import ArrowRight from 'lucide-svelte/icons/arrow-right';
+	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
 	import { Separator } from '$lib/components/ui/separator';
 	import Header from '$lib/components/Header.svelte';
 </script>
