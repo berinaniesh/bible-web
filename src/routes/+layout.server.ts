@@ -7,6 +7,7 @@ export const load: LayoutServerLoad = async ({ fetch }) => {
 	const currentLocation = [{ location: '/', locationName: 'Home', isFinal: true }];
 	return {
 		currentLocation: currentLocation,
-		translations: translations
+		translations: translations,
+		displayParallel: false
 	};
 };

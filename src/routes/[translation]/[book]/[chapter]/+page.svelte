@@ -1,11 +1,9 @@
 <script lang="ts">
 	export let data;
-	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
 	import { Separator } from '$lib/components/ui/separator';
-	import Header from '$lib/components/Header.svelte';
 	import Verse from '$lib/components/Verse.svelte';
 	import type { Verse as VerseType } from '$lib/types';
 	import { setContext } from 'svelte';
@@ -30,9 +28,9 @@
 	});
 
 	const isDesktop = mediaQuery('(min-width: 768px)');
-	let drawerSide: string = "bottom"
+	let drawerSide: string = 'bottom';
 	if (isDesktop) {
-		drawerSide = "right"
+		drawerSide = 'right';
 	}
 
 	function convertCommaToDash(input: string) {
@@ -112,15 +110,6 @@
 	>
 </svelte:head>
 
-<Header
-	displayParallel={true}
-	parallelSelectionForm={data.form}
-	currentTranslation={data.currentTranslation}
-	checkedTranslations={data.selectedParallelTranslations}
-/>
-<Separator />
-
-<Breadcrumb crumbItems={data.currentLocation} />
 <div class={'m-4 text-center font-bold ' + data.font}>
 	{data.bookStruct.book_name}
 	{data.currentChapter}
@@ -184,9 +173,7 @@
 					</li>
 				{/each}
 			</ul>
-			<Button
-				on:click={getVerseNumbers}>Copy</Button
-			>
+			<Button on:click={getVerseNumbers}>Copy</Button>
 		</div>
 	</Sheet.Content>
 </Sheet.Root>

@@ -57,6 +57,7 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 			)
 		),
 		selectedParallelTranslations: parallelTranslations,
+		displayParallel: true,
 		currentLocation: currentLocation,
 		currentChapter: params.chapter,
 		nav: nav,

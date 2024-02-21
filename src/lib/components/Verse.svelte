@@ -33,7 +33,7 @@
 </script>
 
 <p
-	on:click={() => {
+	on:dblclick={() => {
 		addToCopiedArray(verse);
 	}}
 	class={'my-4 leading-loose decoration-dotted ' + font}
