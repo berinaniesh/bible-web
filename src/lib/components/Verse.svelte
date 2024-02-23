@@ -45,6 +45,6 @@
 		{verse.verse}
 	{/if}
 	{#if parallel}
-		<sup class="text-muted-foreground">{verse.translation}</sup>
+		<sup class="-z-50 text-muted-foreground">{verse.translation}</sup>
 	{/if}
 </p>
