@@ -3,6 +3,7 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
+	import { Separator } from '$lib/components/ui/separator';
 </script>
 
 <svelte:head>
@@ -14,7 +15,12 @@
 		data.font +
 		' fixed top-28 mx-auto flex h-12 w-screen max-w-screen-md flex-col justify-center bg-background'}
 >
-	{data.bookStruct.book_name}
+	<p>
+		{data.bookStruct.book_name}
+	</p>
+	<div class='fixed top-40 w-screen max-w-screen-md'>
+		<Separator></Separator>
+	</div>
 </div>
 <div class="mx-auto my-6 mt-48 grid w-2/3 grid-cols-4 gap-3 md:grid-cols-6">
 	{#each data.chapters as chapter}

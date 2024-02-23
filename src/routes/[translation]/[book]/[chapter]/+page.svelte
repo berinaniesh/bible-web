@@ -115,6 +115,9 @@
 		{data.bookStruct.book_name}
 		{data.currentChapter}
 	</p>
+	<div class='fixed top-40 w-screen max-w-screen-md'>
+		<Separator></Separator>
+	</div>
 </div>
 <div class="px-4">
 	<div class="mt-44">
