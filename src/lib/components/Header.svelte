@@ -12,7 +12,7 @@
 	export let checkedTranslations: string[] = [];
 </script>
 
-<div class="my-1 flex h-12 flex-col justify-center">
+<div class="my-1 flex h-12 flex-col justify-center px-2">
 	<div class="grid grid-cols-2">
 		<div class="flex">
 			<a href="/" class="flex flex-col justify-center text-2xl font-bold"><p>The Bible</p></a>

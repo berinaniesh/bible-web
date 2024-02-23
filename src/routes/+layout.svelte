@@ -8,16 +8,20 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 </script>
 
-<div class="mx-auto max-w-screen-md px-4 font-sans">
+<div class="mx-auto max-w-screen-md font-sans">
 	<ModeWatcher />
 	<Toaster />
-	<Header
-		displayParallel={$page.data.displayParallel}
-		parallelSelectionForm={$page.data.form}
-		currentTranslation={$page.data.currentTranslation}
-		checkedTranslations={$page.data.selectedParallelTranslations}
-	/>
-	<Separator />
-	<Breadcrumb crumbItems={$page.data.currentLocation} />
-	<slot />
+	<div class="fixed top-0 mx-auto w-screen max-w-screen-md bg-background md:w-screen">
+		<Header
+			displayParallel={$page.data.displayParallel}
+			parallelSelectionForm={$page.data.form}
+			currentTranslation={$page.data.currentTranslation}
+			checkedTranslations={$page.data.selectedParallelTranslations}
+		/>
+		<Separator />
+		<Breadcrumb crumbItems={$page.data.currentLocation} />
+	</div>
+	<div class="mt-32">
+		<slot />
+	</div>
 </div>

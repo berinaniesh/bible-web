@@ -9,10 +9,14 @@
 	<title>{data.bookStruct.book_name} • {data.currentTranslation} • Bible</title>
 </svelte:head>
 
-<div class={'m-4 text-center font-bold ' + data.font}>
+<div
+	class={'text-center font-bold ' +
+		data.font +
+		' fixed top-28 mx-auto flex h-12 w-screen max-w-screen-md flex-col justify-center bg-background'}
+>
 	{data.bookStruct.book_name}
 </div>
-<div class="mx-auto my-6 grid w-2/3 grid-cols-4 gap-3 md:grid-cols-6">
+<div class="mx-auto my-6 mt-48 grid w-2/3 grid-cols-4 gap-3 md:grid-cols-6">
 	{#each data.chapters as chapter}
 		<a href={'/' + data.currentTranslation + '/' + data.currentBook + '/' + chapter}
 			><Button variant="outline" class="w-12">{chapter}</Button></a

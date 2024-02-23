@@ -106,51 +106,61 @@
 	>
 </svelte:head>
 
-<div class={'m-4 text-center font-bold ' + data.font}>
-	{data.bookStruct.book_name}
-	{data.currentChapter}
+<div
+	class={'text-center font-bold ' +
+		data.font +
+		' fixed top-28 mx-auto flex h-12 w-screen max-w-screen-md flex-col justify-center bg-background'}
+>
+	<p>
+		{data.bookStruct.book_name}
+		{data.currentChapter}
+	</p>
 </div>
-{#each data.verses as verse, index}
-	<div>
-		<Verse {verse} parallel={data.parallelTranslationVerses.length !== 0} />
-		{#each data.parallelTranslationVerses as parallelTranslation}
-			<Verse verse={parallelTranslation[index]} parallel={true} />
+<div class="px-4">
+	<div class="mt-44">
+		{#each data.verses as verse, index}
+			<div>
+				<Verse {verse} parallel={data.parallelTranslationVerses.length !== 0} />
+				{#each data.parallelTranslationVerses as parallelTranslation}
+					<Verse verse={parallelTranslation[index]} parallel={true} />
+				{/each}
+			</div>
+			{#if data.parallelTranslationVerses.length !== 0}
+				<Separator></Separator>
+			{/if}
 		{/each}
 	</div>
-	{#if data.parallelTranslationVerses.length !== 0}
-		<Separator></Separator>
-	{/if}
-{/each}
-<div class="mx-auto my-12 flex w-full justify-between">
-	{#if data.nav.previous}
-		<a
-			href={'/' +
-				data.currentTranslation +
-				'/' +
-				data.nav.previous.book.replace(' ', '-') +
-				'/' +
-				data.nav.previous.chapter}><Button><ArrowLeft></ArrowLeft></Button></a
-		>
-	{:else}
-		<div></div>
-	{/if}
-	{#if data.nav.next}
-		<a
-			href={'/' +
-				data.currentTranslation +
-				'/' +
-				data.nav.next.book.replace(' ', '-') +
-				'/' +
-				data.nav.next.chapter}><Button><ArrowRight></ArrowRight></Button></a
-		>
-	{:else}
-		<div></div>
+	<div class="mx-auto my-12 flex w-full justify-between">
+		{#if data.nav.previous}
+			<a
+				href={'/' +
+					data.currentTranslation +
+					'/' +
+					data.nav.previous.book.replace(' ', '-') +
+					'/' +
+					data.nav.previous.chapter}><Button><ArrowLeft></ArrowLeft></Button></a
+			>
+		{:else}
+			<div></div>
+		{/if}
+		{#if data.nav.next}
+			<a
+				href={'/' +
+					data.currentTranslation +
+					'/' +
+					data.nav.next.book.replace(' ', '-') +
+					'/' +
+					data.nav.next.chapter}><Button><ArrowRight></ArrowRight></Button></a
+			>
+		{:else}
+			<div></div>
+		{/if}
+	</div>
+
+	{#if isCopyDrawerOpen && $isDesktop == false}
+		<div class="h-80"></div>
 	{/if}
 </div>
-
-{#if isCopyDrawerOpen && $isDesktop == false}
-	<div class="h-80"></div>
-{/if}
 
 {#if $isDesktop}
 	<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false}>

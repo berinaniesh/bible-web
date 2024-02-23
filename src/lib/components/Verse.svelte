@@ -38,7 +38,7 @@
 	}}
 	class={'my-4 leading-loose decoration-dotted ' + font}
 >
-	<sup>{verse.verse_number}</sup>
+	<sup class="-z-50 text-muted-foreground">{verse.verse_number}</sup>
 	{#if selected}
 		<b class="font-normal underline decoration-dotted">{verse.verse}</b>
 	{:else}

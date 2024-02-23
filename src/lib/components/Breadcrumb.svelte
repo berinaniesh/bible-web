@@ -5,7 +5,7 @@
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 </script>
 
-<div class="my-6 flex h-8 flex-col justify-center">
+<div class="my-4 flex h-8 flex-col justify-center px-2">
 	<div class="flex text-sm">
 		<Home class="size-6" />
 		{#each crumbItems as crumbItem}
