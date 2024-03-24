@@ -150,7 +150,7 @@
 	</div>
 </div>
 <div class="px-4">
-	<div class="mt-44">
+	<div class="mt-48">
 		{#each data.verses as verse, index}
 			<div>
 				<Verse {verse} parallel={data.parallelTranslationVerses.length !== 0} />
