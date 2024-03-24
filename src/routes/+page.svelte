@@ -13,11 +13,10 @@
 <div class="md:grid md:grid-cols-2">
 	{#each data.translations as translation}
 		<div class="m-8">
-			<TranslationCard translation={translation} />
+			<TranslationCard {translation} />
 		</div>
 	{/each}
 </div>
-
 
 <div class="my-8 flex justify-center">
 	<Footer link={data.continueReading} />

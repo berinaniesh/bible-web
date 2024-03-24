@@ -11,14 +11,34 @@
 </svelte:head>
 
 <div
-	class={'text-center font-bold ' +
+	class={'font-bold ' +
 		data.font +
-		' fixed top-28 mx-auto flex h-12 w-screen max-w-screen-md flex-col justify-center bg-background'}
+		' fixed top-28 mx-auto flex h-16 w-screen max-w-screen-md flex-col justify-center bg-background'}
 >
-	<p>
-		{data.bookStruct.book_name}
-	</p>
-	<div class='fixed top-40 w-screen max-w-screen-md'>
+	<div class="mx-auto flex w-11/12 justify-between">
+		<div>
+			{#if data.nav.previous}
+				<a href={'/' + data.currentTranslation + '/' + data.nav.previous.book.replace(' ', '-')}
+					><Button variant="outline"><ArrowLeft></ArrowLeft></Button></a
+				>
+			{:else}
+				<div></div>
+			{/if}
+		</div>
+		<p>
+			{data.bookStruct.book_name}
+		</p>
+		<div>
+			{#if data.nav.next}
+				<a href={'/' + data.currentTranslation + '/' + data.nav.next.book.replace(' ', '-')}
+					><Button variant="outline"><ArrowRight></ArrowRight></Button></a
+				>
+			{:else}
+				<div></div>
+			{/if}
+		</div>
+	</div>
+	<div class="fixed top-44 w-screen max-w-screen-md">
 		<Separator></Separator>
 	</div>
 </div>
@@ -28,20 +48,4 @@
 			><Button variant="outline" class="w-12">{chapter}</Button></a
 		>
 	{/each}
-</div>
-<div class="mx-auto my-12 flex w-3/4 justify-between">
-	{#if data.nav.previous}
-		<a href={'/' + data.currentTranslation + '/' + data.nav.previous.book.replace(' ', '-')}
-			><Button><ArrowLeft></ArrowLeft></Button></a
-		>
-	{:else}
-		<div></div>
-	{/if}
-	{#if data.nav.next}
-		<a href={'/' + data.currentTranslation + '/' + data.nav.next.book.replace(' ', '-')}
-			><Button><ArrowRight></ArrowRight></Button></a
-		>
-	{:else}
-		<div></div>
-	{/if}
 </div>

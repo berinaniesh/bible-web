@@ -32,8 +32,12 @@
 	});
 </script>
 
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <p
-	on:dblclick={() => {
+	on:click={() => {
+		addToCopiedArray(verse);
+	}}
+	on:keypress={() => {
 		addToCopiedArray(verse);
 	}}
 	class={'my-4 leading-loose decoration-dotted ' + font}

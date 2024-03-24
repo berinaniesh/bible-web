@@ -7,6 +7,7 @@ export const load: PageServerLoad = () => {
 		{ location: '', locationName: 'Changelog', isFinal: true }
 	];
 	const changelog: Changelog[] = [
+		{ date: 'Mar 24, 2024', text: 'Move next and previous buttons to the top for easier access' },
 		{ date: 'Feb 19, 2024', text: 'Copy verses feature live.' },
 		{ date: 'Feb 16, 2024', text: 'Finish parallel reading feature.' },
 		{ date: 'Feb 14, 2024', text: 'New UI deployed.' },
