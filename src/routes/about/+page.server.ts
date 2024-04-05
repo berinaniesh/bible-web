@@ -13,8 +13,7 @@ export const load: PageServerLoad = () => {
 		`The backend of this site can be found <a target="blank" class="underline" href="https://api.bible.berinaniesh.xyz/docs">here</a> and the source for the same can be found <a class="underline" target="blank" href="https://github.com/berinaniesh/bible-api">here</a>.`,
 		`No guarantees are made for the availability, reliability or correctness of the frontend or the backend.`,
 		`The source of Bible translations can be found at <a class="underline" target="blank" href="https://github.com/tfbf">TFBF’s GitHub Repo</a>.`,
-		`Bible requests welcome as long as the translation requested is in the public domain. If the language is something other than English (or Tamil), I'll need some help with feeding the translation into the database, fixing spelling mistakes, separating verses, etc.`,
-		`Due to the structure of the database and the backend, adding the Apocrypha is not possible (in	any translation).`
+		`Bible requests welcome as long as the translation requested is in the public domain. If the language is something other than English (or Tamil), I'll need some help with feeding the translation into the database, fixing spelling mistakes, separating verses, etc.`
 	];
 	return {
 		currentLocation: currentLocation,
