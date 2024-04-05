@@ -1,5 +1,6 @@
 #!/bin/bash
 
+npm i
 npm run build
 rm bible-web.zip 2> /dev/null
 zip -r bible-web.zip .
