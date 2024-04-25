@@ -78,7 +78,11 @@
 				let currentChapterVerse = '';
 				for (let i = 0; i < groupedVerses[tra].length; i++) {
 					currentChapterString += groupedVerses[tra][i].verse_number + ',';
-					currentChapterVerse += `${groupedVerses[tra][i].verse_number}. ${groupedVerses[tra][i].verse}\n\n`;
+					if (groupedVerses[tra].length > 1) {
+						currentChapterVerse += `${groupedVerses[tra][i].verse_number}. ${groupedVerses[tra][i].verse}\n\n`;
+					} else {
+						currentChapterVerse += `${groupedVerses[tra][i].verse}\n\n`;
+					}
 				}
 				const mantissa =
 					convertCommaToDash(currentChapterString.split(':')[1]) + ' ' + '(' + tra + ')';
