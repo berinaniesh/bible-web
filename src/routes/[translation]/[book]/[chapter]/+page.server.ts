@@ -53,7 +53,8 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 				parallelTranslations.includes('TOVBSI'),
 				parallelTranslations.includes('KJV'),
 				parallelTranslations.includes('MLSVP'),
-				parallelTranslations.includes('ASV')
+				parallelTranslations.includes('ASV'),
+				parallelTranslations.includes('WEB')
 			)
 		),
 		selectedParallelTranslations: parallelTranslations,
@@ -79,7 +80,8 @@ export const actions: Actions = {
 			enabledParallelTranslations.includes('TOVBSI'),
 			enabledParallelTranslations.includes('KJV'),
 			enabledParallelTranslations.includes('MLSVP'),
-			enabledParallelTranslations.includes('ASV')
+			enabledParallelTranslations.includes('ASV'),
+			enabledParallelTranslations.includes('WEB')
 		);
 		const form = await superValidate(event, formSchema);
 		if (!form.valid) {
@@ -100,6 +102,9 @@ export const actions: Actions = {
 		}
 		if (form.data.asv) {
 			cookieArray.push('asv');
+		}
+		if (form.data.web) {
+			cookieArray.push('web');
 		}
 
 		const cookie: string = cookieArray.join('+');
