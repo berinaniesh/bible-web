@@ -1,6 +1,9 @@
 import xml.etree.ElementTree as ET
 import datetime
 import requests
+import subprocess
+
+fixed_pages = ["about", "help", "changelog"]
 
 def create_sitemap(urls):
     # Create the root element
@@ -14,19 +17,27 @@ def create_sitemap(urls):
         loc_element.text = url
         lastmod_element = ET.SubElement(url_element, "lastmod")
         lastmod_element.text = datetime.datetime.now().isoformat()
+        changefreq_element = ET.SubElement(url_element, "changefreq")
+        changefreq_element.text = "never"
+
+        for p in fixed_pages:
+            if p in url:
+                changefreq_element.text = "monthly"
 
     # Create the tree and write it to a file
     tree = ET.ElementTree(root)
     tree.write("static/sitemap.xml", encoding="UTF-8", xml_declaration=True)
 
 # Example URLs (replace these with your actual URLs)
-fixed_pages = ["about", "help", "changelog"]
 
 urls = []
 for p in fixed_pages:
     urls.append(f"https://bible.berinaniesh.xyz/{p}")
 
-translations = ["TOVBSI", "KJV", "MLSVP", "ASV", "WEB"]
+
+trs = requests.get("https://api.bible.berinaniesh.xyz/translations").json()
+
+translations = [i["name"] for i in trs]
 chaptercount = requests.get("https://api.bible.berinaniesh.xyz/chaptercount").json()
 
 for translation in translations:
@@ -41,3 +52,4 @@ for translation in translations:
 
 create_sitemap(urls)
 
+subprocess.run(["ucf", "static/sitemap.xml"])
