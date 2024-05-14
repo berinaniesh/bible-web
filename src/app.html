@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<!-- Google tag (gtag.js) -->
-		<script async src="https://analytics.bible.berinaniesh.xyz/gtag/js?id=G-FVBQV28J16"></script>
+		<script async src="https://bible.berinaniesh.xyz/gsc"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag() {
@@ -10,7 +10,9 @@
 			}
 			gtag('js', new Date());
 
-			gtag('config', 'G-FVBQV28J16');
+			gtag('config', 'G-FVBQV28J16', {
+				server_container_url: 'https://analytics.bible.berinaniesh.xyz'
+			});
 		</script>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
