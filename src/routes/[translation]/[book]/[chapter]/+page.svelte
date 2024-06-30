@@ -180,7 +180,8 @@
 				<Sheet.Header>
 					<Sheet.Title>Copy Verses</Sheet.Title>
 					<Sheet.Description>
-						Add to this drawer by double clicking on any verse and then click the button below to copy the verses into your clipboard.
+						Add to this drawer by double clicking on any verse and then click the button below to
+						copy the verses into your clipboard.
 					</Sheet.Description>
 				</Sheet.Header>
 				<ul class="m-4 list-disc">
@@ -202,7 +203,8 @@
 				<Sheet.Header>
 					<Sheet.Title>Copy Verses</Sheet.Title>
 					<Sheet.Description>
-						Add to this drawer by double clicking on any verse and then click the button below to copy the verses into your clipboard.
+						Add to this drawer by double clicking on any verse and then click the button below to
+						copy the verses into your clipboard.
 					</Sheet.Description>
 				</Sheet.Header>
 				<ul class="m-4 list-disc">

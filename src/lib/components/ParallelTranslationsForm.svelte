@@ -9,14 +9,15 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	export let form: SuperValidated<ParallelTranslationsFormSchema>;
 	export let currentTranslation: string;
-	const translations = ['TOVBSI', 'KJV', 'MLSVP', 'ASV', 'WEB'];
+	const translations = ['TOVBSI', 'KJV', 'MLSVP', 'ASV', 'WEB', 'WEBU'];
 	export let checkedTranslations: string[] = [];
 	let formSchema = createParallelTranslationsFormSchema(
 		checkedTranslations.includes('TOVBSI'),
 		checkedTranslations.includes('KJV'),
 		checkedTranslations.includes('MLSVP'),
 		checkedTranslations.includes('ASV'),
-		checkedTranslations.includes('WEB')
+		checkedTranslations.includes('WEB'),
+		checkedTranslations.includes('WEBU')
 	);
 </script>
 
