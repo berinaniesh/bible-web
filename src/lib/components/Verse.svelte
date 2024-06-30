@@ -34,7 +34,7 @@
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <p
-	on:click={() => {
+	on:dblclick={() => {
 		addToCopiedArray(verse);
 	}}
 	on:keypress={() => {
