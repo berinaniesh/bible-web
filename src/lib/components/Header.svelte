@@ -12,6 +12,7 @@
 	import { TRANSLATIONS, BOOKS } from '$lib/constants';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import { Switch } from '$lib/components/ui/switch/index.js';
+	import { browser } from '$app/environment';
 	export let displayParallel: boolean = false;
 	export let currentTranslation: string = '';
 	export let parallelSelectionForm: any = '';
@@ -20,7 +21,44 @@
 	let searchBook: String = '';
 	let searchMatchCase:boolean = false;
 	let searchString: String = '';
-	$: searchButtonEnabled = searchTranslation.length != 0 && searchString.length != 0;
+	$: searchButtonEnabled = searchString.length !== 0 && searchTranslation.length !== 0;
+	let searchPath = '';
+
+	function getSearchPath() {
+		let result = "/search";
+		if (browser) {
+			if (searchString.length !== 0) {
+				result = result + '?q=' + searchString;
+			}
+			if (searchTranslation.length !== 0) {
+				result = result + '&translation=' + searchTranslation;
+			}
+			if (searchBook.length !== 0) {
+				result = result + '&book=' + searchBook;
+			}
+			if (searchMatchCase) {
+				result = result + '&matchcase=true'
+			} else {
+				result = result + '&matchcase=false'
+			}
+		}
+		return result;
+	}
+
+	function updateSearchTranslation(v: any) {
+		searchTranslation = v.value;
+		searchPath = getSearchPath();
+	}
+
+	function updateSearchBook(v: any) {
+		searchBook = v.value;
+		searchPath = getSearchPath();
+	}
+
+	function updateMatchCase(v: boolean) {
+		searchMatchCase = v;
+		searchPath = getSearchPath();
+	}
 </script>
 
 <div class="my-1 flex h-12 flex-col justify-center px-2">
@@ -51,7 +89,7 @@
 								<div>
 									<Input bind:value={searchString} class="my-2" placeholder="Search text" />
 									<div class="my-2">
-										<Select.Root>
+										<Select.Root onSelectedChange={(v) => updateSearchTranslation(v)}>
 											<Select.Trigger>
 												<Select.Value placeholder="Translation" />
 											</Select.Trigger>
@@ -65,7 +103,7 @@
 										</Select.Root>
 									</div>
 									<div class="my-2">
-										<Select.Root>
+										<Select.Root onSelectedChange={(v) => updateSearchBook(v)}>
 											<Select.Trigger>
 												<Select.Value placeholder="Book (optional)" />
 											</Select.Trigger>
@@ -79,11 +117,15 @@
 										</Select.Root>
 									</div>
 									<div class="my-2">
-										<Switch id="matchcase" />
+										<Switch id="matchcase" onCheckedChange={(v) => updateMatchCase(v)}/>
 										<Label for="matchcase">Match case</Label>
 									</div>
 									<div class="my-2 ml-[136px]">
-										<Button href="/search?q={searchString}">Go</Button>
+										{#if searchButtonEnabled}
+											<Button href={searchPath}>Go</Button>
+										{:else}
+											<Button disabled>Go</Button>
+										{/if}
 									</div>
 								</div>
 							</DropdownMenu.Content>
