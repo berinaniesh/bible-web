@@ -150,3 +150,5 @@ export const VERSECOUNTS = [
 	1071, 678, 1151, 879, 1007, 433, 437, 257, 149, 155, 104, 95, 89, 47, 113, 83, 46, 25, 303, 108,
 	105, 61, 105, 13, 14, 25, 404
 ];
+
+export const TRANSLATIONS = ['TOVBSI', 'KJV', 'MLSVP', 'ASV', 'WEB', 'WEBU'];

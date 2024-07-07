@@ -7,6 +7,11 @@
 	import Rows2 from 'lucide-svelte/icons/rows-2';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
+	import { Input } from '$lib/components/ui/input';
+	import * as Select from '$lib/components/ui/select';
+	import { TRANSLATIONS, BOOKS } from '$lib/constants';
+	import { Label } from '$lib/components/ui/label/index.js';
+	import { Switch } from '$lib/components/ui/switch/index.js';
 	export let displayParallel: boolean = false;
 	export let currentTranslation: string = '';
 	export let parallelSelectionForm: any = '';
@@ -37,6 +42,44 @@
 									<p class="mb-2 text-sm text-muted-foreground">
 										Find bible verses with specific text.
 									</p>
+								</div>
+								<div>
+									<Input class="my-2" placeholder="Search text" />
+									<div class="my-2">
+										<Select.Root>
+											<Select.Trigger>
+												<Select.Value placeholder="Translation" />
+											</Select.Trigger>
+											<Select.Content>
+												<Select.Group>
+													{#each TRANSLATIONS as tr}
+														<Select.Item value={tr}>{tr}</Select.Item>
+													{/each}
+												</Select.Group>
+											</Select.Content>
+										</Select.Root>
+									</div>
+									<div class="my-2">
+										<Select.Root>
+											<Select.Trigger>
+												<Select.Value placeholder="Book (optional)" />
+											</Select.Trigger>
+											<Select.Content class="h-48 overflow-y-scroll">
+												<Select.Group>
+													{#each BOOKS as b}
+														<Select.Item value={b}>{b}</Select.Item>
+													{/each}
+												</Select.Group>
+											</Select.Content>
+										</Select.Root>
+									</div>
+									<div class="my-2">
+										<Switch id="matchcase" />
+										<Label for="matchcase">Match case</Label>
+									</div>
+									<div class="my-2 ml-[136px]">
+										<Button>Go</Button>
+									</div>
 								</div>
 							</DropdownMenu.Content>
 						</DropdownMenu.Root>
