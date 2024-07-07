@@ -3,6 +3,7 @@
 	import { toggleMode } from 'mode-watcher';
 	import Sun from 'lucide-svelte/icons/sun';
 	import Moon from 'lucide-svelte/icons/moon';
+	import Search from 'lucide-svelte/icons/search';
 	import Rows2 from 'lucide-svelte/icons/rows-2';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import ParallelTranslationsForm from '$lib/components/ParallelTranslationsForm.svelte';
@@ -23,6 +24,23 @@
 			</div>
 			<div class="flex flex-col justify-center">
 				<div class="flex">
+					<div class="mx-2">
+						<DropdownMenu.Root>
+							<DropdownMenu.Trigger asChild let:builder>
+								<Button builders={[builder]} variant="outline">
+									<Search></Search>
+								</Button>
+							</DropdownMenu.Trigger>
+							<DropdownMenu.Content class="w-64 p-8">
+								<div>
+									<p class="text-lg font-bold">Search</p>
+									<p class="mb-2 text-sm text-muted-foreground">
+										Find bible verses with specific text.
+									</p>
+								</div>
+							</DropdownMenu.Content>
+						</DropdownMenu.Root>
+					</div>
 					<div class="mx-2 flex flex-col justify-center">
 						{#if displayParallel === true}
 							<DropdownMenu.Root>
