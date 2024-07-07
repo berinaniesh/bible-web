@@ -19,13 +19,13 @@
 	export let checkedTranslations: string[] = [];
 	let searchTranslation: String = '';
 	let searchBook: String = '';
-	let searchMatchCase:boolean = false;
+	let searchMatchCase: boolean = false;
 	let searchString: String = '';
 	$: searchButtonEnabled = searchString.length !== 0 && searchTranslation.length !== 0;
 	let searchPath = '';
 
 	function getSearchPath() {
-		let result = "/search";
+		let result = '/search';
 		if (browser) {
 			if (searchString.length !== 0) {
 				result = result + '?q=' + searchString;
@@ -37,9 +37,9 @@
 				result = result + '&book=' + searchBook;
 			}
 			if (searchMatchCase) {
-				result = result + '&matchcase=true'
+				result = result + '&matchcase=true';
 			} else {
-				result = result + '&matchcase=false'
+				result = result + '&matchcase=false';
 			}
 		}
 		return result;
@@ -117,12 +117,14 @@
 										</Select.Root>
 									</div>
 									<div class="my-2">
-										<Switch id="matchcase" onCheckedChange={(v) => updateMatchCase(v)}/>
+										<Switch id="matchcase" onCheckedChange={(v) => updateMatchCase(v)} />
 										<Label for="matchcase">Match case</Label>
 									</div>
 									<div class="my-2 ml-[136px]">
 										{#if searchButtonEnabled}
-											<Button href={searchPath}>Go</Button>
+											<DropdownMenu.Item>
+												<Button href={searchPath}>Go</Button>
+											</DropdownMenu.Item>
 										{:else}
 											<Button disabled>Go</Button>
 										{/if}

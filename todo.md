@@ -1,2 +1,2 @@
-* Search functionality to site
-* Hash tags for verse numbers (easier nav)
+- Search functionality to site
+- Hash tags for verse numbers (easier nav)
