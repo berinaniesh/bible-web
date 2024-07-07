@@ -16,6 +16,11 @@
 	export let currentTranslation: string = '';
 	export let parallelSelectionForm: any = '';
 	export let checkedTranslations: string[] = [];
+	let searchTranslation: String = '';
+	let searchBook: String = '';
+	let searchMatchCase:boolean = false;
+	let searchString: String = '';
+	$: searchButtonEnabled = searchTranslation.length != 0 && searchString.length != 0;
 </script>
 
 <div class="my-1 flex h-12 flex-col justify-center px-2">
@@ -44,7 +49,7 @@
 									</p>
 								</div>
 								<div>
-									<Input class="my-2" placeholder="Search text" />
+									<Input bind:value={searchString} class="my-2" placeholder="Search text" />
 									<div class="my-2">
 										<Select.Root>
 											<Select.Trigger>
@@ -78,7 +83,7 @@
 										<Label for="matchcase">Match case</Label>
 									</div>
 									<div class="my-2 ml-[136px]">
-										<Button>Go</Button>
+										<Button href="/search?q={searchString}">Go</Button>
 									</div>
 								</div>
 							</DropdownMenu.Content>
