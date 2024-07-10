@@ -1,8 +1,8 @@
 <script lang="ts">
-    export let data;
+	export let data;
 </script>
 
-Search string: { data.search_string }
+Search string: {data.search_string}
 
 Search translation: {data.search_translation}
 

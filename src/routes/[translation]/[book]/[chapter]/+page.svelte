@@ -153,70 +153,75 @@
 		<Separator></Separator>
 	</div>
 </div>
-<div class="px-4">
-	<div class="mt-48">
-		{#each data.verses as verse, index}
-			<div>
-				<Verse {verse} parallel={data.parallelTranslationVerses.length !== 0} />
-				{#each data.parallelTranslationVerses as parallelTranslation}
-					<Verse verse={parallelTranslation[index]} parallel={true} />
-				{/each}
-			</div>
-			{#if data.parallelTranslationVerses.length !== 0}
-				<Separator></Separator>
-			{/if}
-		{/each}
+<div class="flex flex-col">
+	<div class="h-14 w-10">
+		<!-- Empty div for top positioning -->
+	</div>
+	<div class="px-4">
+		<div>
+			{#each data.verses as verse, index}
+				<div>
+					<Verse {verse} parallel={data.parallelTranslationVerses.length !== 0} />
+					{#each data.parallelTranslationVerses as parallelTranslation}
+						<Verse verse={parallelTranslation[index]} parallel={true} />
+					{/each}
+				</div>
+				{#if data.parallelTranslationVerses.length !== 0}
+					<Separator></Separator>
+				{/if}
+			{/each}
+		</div>
+
+		{#if isCopyDrawerOpen && $isDesktop == false}
+			<div class="h-80"></div>
+		{/if}
 	</div>
 
-	{#if isCopyDrawerOpen && $isDesktop == false}
-		<div class="h-80"></div>
+	{#if $isDesktop}
+		<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false}>
+			<Sheet.Content side="right">
+				<div class="mx-auto max-w-screen-md">
+					<Sheet.Header>
+						<Sheet.Title>Copy Verses</Sheet.Title>
+						<Sheet.Description>
+							Add to this drawer by clicking on any verse and then click the button below to copy
+							the verses into your clipboard.
+						</Sheet.Description>
+					</Sheet.Header>
+					<ul class="m-4 list-disc">
+						{#each selectedVerses as selectedVerse}
+							<li>
+								{selectedVerse.book}
+								{selectedVerse.chapter}:{selectedVerse.verse_number} ({selectedVerse.translation})
+							</li>
+						{/each}
+					</ul>
+					<Button on:click={getVerseNumbers}>Copy</Button>
+				</div>
+			</Sheet.Content>
+		</Sheet.Root>
+	{:else}
+		<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false}>
+			<Sheet.Content side="bottom">
+				<div class="mx-auto max-w-screen-md">
+					<Sheet.Header>
+						<Sheet.Title>Copy Verses</Sheet.Title>
+						<Sheet.Description>
+							Add to this drawer by clicking on any verse and then click the button below to copy
+							the verses into your clipboard.
+						</Sheet.Description>
+					</Sheet.Header>
+					<ul class="m-4 list-disc">
+						{#each selectedVerses as selectedVerse}
+							<li>
+								{selectedVerse.book}
+								{selectedVerse.chapter}:{selectedVerse.verse_number} ({selectedVerse.translation})
+							</li>
+						{/each}
+					</ul>
+					<Button on:click={getVerseNumbers}>Copy</Button>
+				</div>
+			</Sheet.Content>
+		</Sheet.Root>
 	{/if}
 </div>
-
-{#if $isDesktop}
-	<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false}>
-		<Sheet.Content side="right">
-			<div class="mx-auto max-w-screen-md">
-				<Sheet.Header>
-					<Sheet.Title>Copy Verses</Sheet.Title>
-					<Sheet.Description>
-						Add to this drawer by double clicking on any verse and then click the button below to
-						copy the verses into your clipboard.
-					</Sheet.Description>
-				</Sheet.Header>
-				<ul class="m-4 list-disc">
-					{#each selectedVerses as selectedVerse}
-						<li>
-							{selectedVerse.book}
-							{selectedVerse.chapter}:{selectedVerse.verse_number} ({selectedVerse.translation})
-						</li>
-					{/each}
-				</ul>
-				<Button on:click={getVerseNumbers}>Copy</Button>
-			</div>
-		</Sheet.Content>
-	</Sheet.Root>
-{:else}
-	<Sheet.Root closeOnOutsideClick={false} open={isCopyDrawerOpen} preventScroll={false}>
-		<Sheet.Content side="bottom">
-			<div class="mx-auto max-w-screen-md">
-				<Sheet.Header>
-					<Sheet.Title>Copy Verses</Sheet.Title>
-					<Sheet.Description>
-						Add to this drawer by double clicking on any verse and then click the button below to
-						copy the verses into your clipboard.
-					</Sheet.Description>
-				</Sheet.Header>
-				<ul class="m-4 list-disc">
-					{#each selectedVerses as selectedVerse}
-						<li>
-							{selectedVerse.book}
-							{selectedVerse.chapter}:{selectedVerse.verse_number} ({selectedVerse.translation})
-						</li>
-					{/each}
-				</ul>
-				<Button on:click={getVerseNumbers}>Copy</Button>
-			</div>
-		</Sheet.Content>
-	</Sheet.Root>
-{/if}
