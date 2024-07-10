@@ -72,7 +72,7 @@
 			</div>
 			<div class="flex flex-col justify-center">
 				<div class="flex">
-					<div class="mx-2">
+					<div class="mr-2">
 						<DropdownMenu.Root>
 							<DropdownMenu.Trigger asChild let:builder>
 								<Button builders={[builder]} variant="outline">
@@ -133,8 +133,8 @@
 							</DropdownMenu.Content>
 						</DropdownMenu.Root>
 					</div>
-					<div class="mx-2 flex flex-col justify-center">
-						{#if displayParallel === true}
+					{#if displayParallel === true}
+						<div class="mr-2 flex flex-col justify-center">
 							<DropdownMenu.Root>
 								<DropdownMenu.Trigger asChild let:builder>
 									<Button builders={[builder]} variant="outline"><Rows2 /></Button>
@@ -156,9 +156,10 @@
 									</div>
 								</DropdownMenu.Content>
 							</DropdownMenu.Root>
-						{/if}
-					</div>
-					<Button variant="outline" class="mx-2 w-12 text-lg" on:click={toggleMode}>
+						</div>
+					{/if}
+
+					<Button variant="outline" class="mr-2 w-12 text-lg" on:click={toggleMode}>
 						<Sun
 							class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
 						/>
