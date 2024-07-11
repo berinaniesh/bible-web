@@ -27,3 +27,11 @@ export type Changelog = {
 	date: string;
 	text: string;
 };
+
+export type SearchJson = {
+	search_text: string;
+	translation: string;
+	match_case?: boolean | null;
+	book?: string | null;
+	abbreviation?: string | null;
+}

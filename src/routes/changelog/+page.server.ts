@@ -8,7 +8,7 @@ export const load: PageServerLoad = () => {
 	];
 	const changelog: Changelog[] = [
 		{
-			date: 'June 30, 2024',
+			date: 'Jun 30, 2024',
 			text: 'Add World English Bible Updated (WEBU) to both backend and frontend.'
 		},
 		{ date: 'May 1, 2024', text: 'Add World English Bible (WEB) to both backend and frontend.' },
