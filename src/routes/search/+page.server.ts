@@ -5,6 +5,9 @@ import type { PageServerLoad } from '../$types';
 export const load: PageServerLoad = async ({ url }) => {
 	let search_text = url.searchParams.get('q');
 	let search_translation = url.searchParams.get('translation');
+	if (search_translation === null) {
+		search_translation = "KJV";
+	}
 	let search_book = url.searchParams.get('book');
 	let search_match_case = url.searchParams.get('matchcase');
 	let font;
