@@ -6,7 +6,7 @@ export const load: PageServerLoad = async ({ url }) => {
 	let search_text = url.searchParams.get('q');
 	let search_translation = url.searchParams.get('translation');
 	if (search_translation === null) {
-		search_translation = "KJV";
+		search_translation = 'KJV';
 	}
 	let search_book = url.searchParams.get('book');
 	let search_match_case = url.searchParams.get('matchcase');
@@ -21,8 +21,8 @@ export const load: PageServerLoad = async ({ url }) => {
 	const currentLocation = [
 		{ location: '/', locationName: 'Home', isFinal: false },
 		{
-			location: '/' + "search",
-			locationName: "Search",
+			location: '/' + 'search',
+			locationName: 'Search',
 			isFinal: true
 		}
 	];
@@ -31,7 +31,7 @@ export const load: PageServerLoad = async ({ url }) => {
 		searchJson.book = search_book;
 	}
 	if (search_match_case !== null) {
-		if (search_match_case === "true") {
+		if (search_match_case === 'true') {
 			searchJson.match_case = true;
 		} else {
 			searchJson.match_case = false;
@@ -50,6 +50,6 @@ export const load: PageServerLoad = async ({ url }) => {
 		search_translation: search_translation,
 		search_book: search_book,
 		search_match_case: search_match_case,
-		verses: searchResultVerses,
+		verses: searchResultVerses
 	};
 };

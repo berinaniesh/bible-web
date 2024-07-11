@@ -34,4 +34,4 @@ export type SearchJson = {
 	match_case?: boolean | null;
 	book?: string | null;
 	abbreviation?: string | null;
-}
+};
