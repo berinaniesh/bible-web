@@ -1,2 +1,4 @@
-- Search functionality to site
-- Hash tags for verse numbers (easier nav)
+# To Dos
+
+- Convert search menu to a form.
+- Fix the misalignment of anchor tags.

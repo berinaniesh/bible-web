@@ -75,7 +75,9 @@
 <div class="my-1 flex h-12 flex-col justify-center px-2">
 	<div class="grid grid-cols-2">
 		<div class="flex">
-			<a href="/" class="flex flex-col justify-center text-2xl font-bold hover:text-blue-600"><p>The Bible</p></a>
+			<a href="/" class="flex flex-col justify-center text-2xl font-bold hover:text-blue-600"
+				><p>The Bible</p></a
+			>
 		</div>
 		<div class="flex justify-between text-3xl">
 			<div>

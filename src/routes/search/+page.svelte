@@ -14,12 +14,12 @@
 {#if data.verses.length === 0}
 	<div>No verses found for the search query.</div>
 {:else}
-	<ul class="mb-8 ml-4 list-disc leading-8 md:ml-8 space-y-4">
+	<ul class="mb-8 ml-4 list-disc space-y-4 leading-8 md:ml-8">
 		{#each data.verses as v}
 			<li>
 				{@html v.verse} -
 				<a
-					class="underline text-blue-600"
+					class="text-blue-600 underline"
 					href={`/${data.search_translation}/${v.book.replace(' ', '-')}/${v.chapter}#${v.verse_number}`}
 					>{v.book_name} {v.chapter}:{v.verse_number}</a
 				>
