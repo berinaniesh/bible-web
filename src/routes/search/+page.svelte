@@ -7,9 +7,23 @@
 </svelte:head>
 
 <h1 class="mb-4 text-xl font-bold">Search results</h1>
-<p>Query: {data.search_text}, Translation: {data.search_translation}</p>
-<ul class="mb-8 ml-4 list-disc leading-8 md:ml-8">
-	{#each data.verses as v}
-		<li>{v.verse}</li>
-	{/each}
-</ul>
+<div class="my-6">
+	<p>{@html data.queryString}</p>
+</div>
+
+{#if data.verses.length === 0}
+	<div>No verses found for the search query.</div>
+{:else}
+	<ul class="mb-8 ml-4 list-disc leading-8 md:ml-8">
+		{#each data.verses as v}
+			<li>
+				{@html v.verse} -
+				<a
+					class="underline"
+					href={`/${data.search_translation}/${v.book.replace(' ', '-')}/${v.chapter}#${v.verse_number}`}
+					>{v.book} {v.chapter}:{v.verse_number}</a
+				>
+			</li>
+		{/each}
+	</ul>
+{/if}

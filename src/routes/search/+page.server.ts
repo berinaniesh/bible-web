@@ -1,9 +1,38 @@
 import { API_URL } from '$lib';
-import type { SearchJson } from '$lib/types';
+import type { SearchJson, Verse } from '$lib/types';
 import type { PageServerLoad } from '../$types';
 
+function highlightSearchTerm(verse: Verse, searchText: string) {
+	const searchRegex = new RegExp(`${searchText}`, 'gi');
+	verse.verse = verse.verse.replace(searchRegex, `<b>${searchText}</b>`);
+	return verse;
+}
+
+function getQueryString(
+	searchText: string,
+	translation: string,
+	book: string | null,
+	matchCase: boolean | null,
+	wholeWords: boolean | null
+) {
+	let queryStrings: string[] = [];
+	queryStrings.push(`<b>Query</b>: ${searchText}`);
+	queryStrings.push(`<b>Translation</b>: ${translation}`);
+	if (book) {
+		queryStrings.push(`<b>Book</b>: ${book}`);
+	}
+	if (matchCase) {
+		queryStrings.push(`<b>Match case</b>: ${matchCase}`);
+	}
+	if (wholeWords) {
+		queryStrings.push(`<b>Whole words</b>: ${wholeWords}`);
+	}
+	const queryString = queryStrings.join(', ');
+	return queryString;
+}
+
 export const load: PageServerLoad = async ({ url }) => {
-	let search_text = url.searchParams.get('q');
+	let search_text = url.searchParams.get('q')!;
 	let search_translation = url.searchParams.get('translation');
 	if (search_translation === null) {
 		search_translation = 'KJV';
@@ -51,14 +80,30 @@ export const load: PageServerLoad = async ({ url }) => {
 		headers: { 'Content-Type': 'application/json', Accept: '*/*' },
 		body: JSON.stringify(searchJson)
 	});
-	const searchResultVerses = await res.json();
+
+	let searchResultVerses = await res.json();
+	searchResultVerses = searchResultVerses.map((verse: Verse) =>
+		highlightSearchTerm(verse, search_text)
+	);
+
+	// @ts-ignore (string | undefined | null can't be assigned to string | null) - duh!
+	const queryString = getQueryString(
+		searchJson.search_text,
+		searchJson.translation,
+		searchJson.book,
+		searchJson.match_case,
+		searchJson.whole_words
+	);
+
 	return {
 		currentLocation: currentLocation,
 		font: font,
 		search_text: search_text,
 		search_translation: search_translation,
 		search_book: search_book,
-		search_match_case: search_match_case,
+		search_match_case: searchJson.match_case,
+		search_whole_word: searchJson.whole_words,
+		queryString: queryString,
 		verses: searchResultVerses
 	};
 };
