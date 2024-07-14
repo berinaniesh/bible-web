@@ -7,6 +7,7 @@ export const load: PageServerLoad = () => {
 		{ location: '', locationName: 'Changelog', isFinal: true }
 	];
 	const changelog: Changelog[] = [
+		{ date: 'July 14, 2024', text: 'Search feature added to frontend.' },
 		{
 			date: 'Jun 30, 2024',
 			text: 'Add World English Bible Updated (WEBU) to both backend and frontend.'
