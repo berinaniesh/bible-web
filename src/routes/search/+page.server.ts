@@ -10,6 +10,7 @@ export const load: PageServerLoad = async ({ url }) => {
 	}
 	let search_book = url.searchParams.get('book');
 	let search_match_case = url.searchParams.get('matchcase');
+	let search_whole_word = url.searchParams.get('wholewords');
 	let font;
 	if (search_translation!.toUpperCase() === 'TOVBSI') {
 		font = 'font-tamil';
@@ -37,6 +38,14 @@ export const load: PageServerLoad = async ({ url }) => {
 			searchJson.match_case = false;
 		}
 	}
+	if (search_whole_word !== null) {
+		if (search_whole_word === 'true') {
+			searchJson.whole_words = true;
+		} else {
+			searchJson.whole_words = false;
+		}
+	}
+
 	const res = await fetch(`${API_URL}/search`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json', Accept: '*/*' },

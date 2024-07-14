@@ -20,6 +20,7 @@
 	let searchTranslation: String = '';
 	let searchBook: String = '';
 	let searchMatchCase: boolean = false;
+	let searchWholeWord: boolean = false;
 	let searchString: String = '';
 	$: searchButtonEnabled = searchString.length !== 0 && searchTranslation.length !== 0;
 	let searchPath = '';
@@ -41,6 +42,11 @@
 			} else {
 				result = result + '&matchcase=false';
 			}
+			if (searchWholeWord) {
+				result = result + '&wholewords=true';
+			} else {
+				result = result + '&wholewords=false';
+			}
 		}
 		return result;
 	}
@@ -57,6 +63,11 @@
 
 	function updateMatchCase(v: boolean) {
 		searchMatchCase = v;
+		searchPath = getSearchPath();
+	}
+
+	function updateWholeWord(v: boolean) {
+		searchWholeWord = v;
 		searchPath = getSearchPath();
 	}
 </script>
@@ -119,6 +130,10 @@
 									<div class="my-2">
 										<Switch id="matchcase" onCheckedChange={(v) => updateMatchCase(v)} />
 										<Label for="matchcase">Match case</Label>
+									</div>
+									<div class="my-2">
+										<Switch id="wholewords" onCheckedChange={(v) => updateWholeWord(v)} />
+										<Label for="wholewords">Whole word</Label>
 									</div>
 									<div class="my-2 ml-[136px]">
 										{#if searchButtonEnabled}

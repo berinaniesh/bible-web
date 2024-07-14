@@ -32,6 +32,7 @@ export type SearchJson = {
 	search_text: string;
 	translation: string;
 	match_case?: boolean | null;
+	whole_words?: boolean | null;
 	book?: string | null;
 	abbreviation?: string | null;
 };
