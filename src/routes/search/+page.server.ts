@@ -4,7 +4,7 @@ import type { PageServerLoad } from '../$types';
 
 function highlightSearchTerm(verse: Verse, searchText: string) {
 	const searchRegex = new RegExp(`${searchText}`, 'gi');
-	verse.verse = verse.verse.replace(searchRegex, `<b>${searchText}</b>`);
+	verse.verse = verse.verse.replace(searchRegex, (match) => `<b>${match}</b>`);
 	return verse;
 }
 
@@ -90,6 +90,7 @@ export const load: PageServerLoad = async ({ url }) => {
 	const queryString = getQueryString(
 		searchJson.search_text,
 		searchJson.translation,
+		// @ts-ignore
 		searchJson.book,
 		searchJson.match_case,
 		searchJson.whole_words

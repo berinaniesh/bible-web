@@ -13,7 +13,7 @@
 				<div class="mx-2 font-bold">{crumbItem.locationName}</div>
 			{:else}
 				<div class="flex">
-					<a class="mx-2 hover:underline" href={crumbItem.location}>{crumbItem.locationName}</a>
+					<a class="mx-2 hover:underline hover:text-blue-600" href={crumbItem.location}>{crumbItem.locationName}</a>
 					<ChevronRight class="mt-[2.5px] size-4" color="#94a3b8" />
 				</div>
 			{/if}
