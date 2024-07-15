@@ -22,7 +22,7 @@
 	let searchMatchCase: boolean = false;
 	let searchWholeWord: boolean = false;
 	let searchString: String = '';
-	$: searchButtonEnabled = searchString.length !== 0 && searchTranslation.length !== 0;
+	$: searchButtonEnabled = searchString.length >= 3 && searchTranslation.length !== 0;
 	let searchPath = '';
 
 	function getSearchPath() {
