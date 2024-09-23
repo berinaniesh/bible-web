@@ -130,10 +130,10 @@
 				<div></div>
 			{/if}
 		</div>
-		<p>
+		<Button href={`/${data.currentTranslation}/${data.currentBook}`}>
 			{data.bookStruct.book_name}
 			{data.currentChapter}
-		</p>
+		</Button>
 		<div>
 			{#if data.nav.next}
 				<a

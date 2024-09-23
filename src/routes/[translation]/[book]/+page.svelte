@@ -25,9 +25,9 @@
 				<div></div>
 			{/if}
 		</div>
-		<p>
+		<Button href={`/${data.currentTranslation}`}>
 			{data.bookStruct.book_name}
-		</p>
+		</Button>
 		<div>
 			{#if data.nav.next}
 				<a href={'/' + data.currentTranslation + '/' + data.nav.next.book.replace(' ', '-')}
