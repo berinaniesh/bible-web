@@ -7,14 +7,11 @@
 
 <Card.Root class="shadow">
 	<Card.Header>
-		<Card.Title><a href={`/${translation.name}`}>{translation.name}</a></Card.Title>
+		<Card.Title><a href={`/${translation.name}`}>{translation.name} <span class="text-muted-foreground font-normal">- {translation.language}</span></a></Card.Title>
 		<Card.Description>{translation.full_name}</Card.Description>
 	</Card.Header>
-	<Card.Content>
-		{translation.language}
-	</Card.Content>
 	<Card.Footer class="flex justify-between">
 		{translation.year}
-		<a href={'/' + translation.name}><Button>Read</Button></a>
+		<Button href={'/' + translation.name} variant="default">Read</Button>
 	</Card.Footer>
 </Card.Root>

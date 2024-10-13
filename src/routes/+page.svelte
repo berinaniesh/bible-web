@@ -12,7 +12,7 @@
 
 <div class="md:grid md:grid-cols-2">
 	{#each data.translations as translation}
-		<div class="m-8">
+		<div class="m-6">
 			<TranslationCard {translation} />
 		</div>
 	{/each}
