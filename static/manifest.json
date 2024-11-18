@@ -1,0 +1,13 @@
+{
+	"name": "VerseQuick",
+	"short_name": "VerseQuick",
+	"start_url": ".",
+	"display": "standalone",
+	"description": "Read the Holy Word of God with an easily navigable and clean UI",
+	"icons": [
+		{
+			"src": "/favicon.png",
+			"type": "image/png"
+		}
+	]
+}

@@ -13,11 +13,13 @@
 			<h3 class="mb-4 text-center font-bold">{testament.testamentName}</h3>
 			<ul>
 				{#each testament.bookNames as element}
-					<a href={'/' + data.currentTranslation + '/' + element.book.replace(' ', '-')}
-						><li class="my-2">
-							<Button class="w-72" variant={'outline'}>{element.book_name}</Button>
-						</li></a
-					>
+					<li class="my-2">
+						<Button
+							href={'/' + data.currentTranslation + '/' + element.book.replace(' ', '-')}
+							class="w-72"
+							variant={'outline'}>{element.book_name}</Button
+						>
+					</li>
 				{/each}
 			</ul>
 		</div>

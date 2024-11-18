@@ -106,7 +106,8 @@
 
 <svelte:head>
 	<title
-		>{data.bookStruct.book_name} {data.currentChapter} • {data.currentTranslation} • Bible</title
+		>{data.bookStruct.book_name}
+		{data.currentChapter} • {data.currentTranslation} • VerseQuick</title
 	>
 </svelte:head>
 
@@ -118,13 +119,14 @@
 	<div class="mx-auto flex w-11/12 justify-between">
 		<div>
 			{#if data.nav.previous}
-				<a
+				<Button
 					href={'/' +
 						data.currentTranslation +
 						'/' +
 						data.nav.previous.book.replace(' ', '-') +
 						'/' +
-						data.nav.previous.chapter}><Button variant="outline"><ArrowLeft></ArrowLeft></Button></a
+						data.nav.previous.chapter}
+					variant="outline"><ArrowLeft></ArrowLeft></Button
 				>
 			{:else}
 				<div></div>
@@ -136,13 +138,14 @@
 		</Button>
 		<div>
 			{#if data.nav.next}
-				<a
+				<Button
 					href={'/' +
 						data.currentTranslation +
 						'/' +
 						data.nav.next.book.replace(' ', '-') +
 						'/' +
-						data.nav.next.chapter}><Button variant="outline"><ArrowRight></ArrowRight></Button></a
+						data.nav.next.chapter}
+					variant="outline"><ArrowRight></ArrowRight></Button
 				>
 			{:else}
 				<div></div>

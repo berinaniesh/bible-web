@@ -18,8 +18,9 @@
 	<div class="mx-auto flex w-11/12 justify-between">
 		<div>
 			{#if data.nav.previous}
-				<a href={'/' + data.currentTranslation + '/' + data.nav.previous.book.replace(' ', '-')}
-					><Button variant="outline"><ArrowLeft></ArrowLeft></Button></a
+				<Button
+					href={'/' + data.currentTranslation + '/' + data.nav.previous.book.replace(' ', '-')}
+					variant="outline"><ArrowLeft></ArrowLeft></Button
 				>
 			{:else}
 				<div></div>
@@ -30,9 +31,7 @@
 		</Button>
 		<div>
 			{#if data.nav.next}
-				<a href={'/' + data.currentTranslation + '/' + data.nav.next.book.replace(' ', '-')}
-					><Button variant="outline"><ArrowRight></ArrowRight></Button></a
-				>
+				<Button variant="outline"><ArrowRight></ArrowRight></Button>
 			{:else}
 				<div></div>
 			{/if}
@@ -44,8 +43,10 @@
 </div>
 <div class="mx-auto my-6 mt-48 grid w-2/3 grid-cols-4 gap-3 md:grid-cols-6">
 	{#each data.chapters as chapter}
-		<a href={'/' + data.currentTranslation + '/' + data.currentBook + '/' + chapter}
-			><Button variant="outline" class="w-12">{chapter}</Button></a
+		<Button
+			href={'/' + data.currentTranslation + '/' + data.currentBook + '/' + chapter}
+			variant="outline"
+			class="w-12">{chapter}</Button
 		>
 	{/each}
 </div>

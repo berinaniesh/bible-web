@@ -7,7 +7,12 @@
 
 <Card.Root class="shadow">
 	<Card.Header>
-		<Card.Title><a href={`/${translation.name}`}>{translation.name} <span class="text-muted-foreground font-normal">- {translation.language}</span></a></Card.Title>
+		<Card.Title
+			><a href={`/${translation.name}`}
+				>{translation.name}
+				<span class="font-normal text-muted-foreground">- {translation.language}</span></a
+			></Card.Title
+		>
 		<Card.Description>{translation.full_name}</Card.Description>
 	</Card.Header>
 	<Card.Footer class="flex justify-between">
