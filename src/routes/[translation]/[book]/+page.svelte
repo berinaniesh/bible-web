@@ -31,7 +31,9 @@
 		</Button>
 		<div>
 			{#if data.nav.next}
-				<Button variant="outline"><ArrowRight></ArrowRight></Button>
+				<Button 
+				href={'/' + data.currentTranslation + '/' + data.nav.next.book.replace(' ', '-')}
+				variant="outline"><ArrowRight></ArrowRight></Button>
 			{:else}
 				<div></div>
 			{/if}
