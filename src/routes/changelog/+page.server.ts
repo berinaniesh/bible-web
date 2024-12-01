@@ -7,9 +7,10 @@ export const load: PageServerLoad = () => {
 		{ location: '', locationName: 'Changelog', isFinal: true }
 	];
 	const changelog: Changelog[] = [
-		{ date: 'Dec 1, 2024', text: 'Fix search in UI' },
+		{ date: 'Dec 1, 2024', text: 'Fix search in UI.' },
+		{ date: 'Nov 30, 2024', text: 'Show verse count of the chapter at top.' },
 		{ date: 'Sep 23, 2024', text: 'Minor UI improvements.' },
-		{ date: 'July 31, 2024', text: 'Add versequick.com as an alternate URL for the frontend' },
+		{ date: 'July 31, 2024', text: 'Add versequick.com as an alternate URL for the frontend.' },
 		{ date: 'July 14, 2024', text: 'Search feature added to frontend.' },
 		{
 			date: 'Jun 30, 2024',
