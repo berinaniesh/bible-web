@@ -17,6 +17,6 @@
 	</Card.Header>
 	<Card.Footer class="flex justify-between">
 		{translation.year}
-		<Button href={'/' + translation.name} variant="default">Read</Button>
+		<Button href={'/' + translation.name} variant="secondary">Read</Button>
 	</Card.Footer>
 </Card.Root>
