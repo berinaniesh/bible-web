@@ -64,6 +64,7 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 		currentChapter: params.chapter,
 		nav: nav,
 		verses: verses,
+		num_verses: verses.length,
 		parallelTranslationVerses: paralellTranslationVerses
 	};
 };

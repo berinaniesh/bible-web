@@ -8,7 +8,7 @@ export const load: PageServerLoad = () => {
 	];
 	const changelog: Changelog[] = [
 		{ date: 'Sep 23, 2024', text: 'Minor UI improvements.' },
-		{ date: 'July 31, 2024', text: 'Add versequick.com as an alternate URL for the frontend'},
+		{ date: 'July 31, 2024', text: 'Add versequick.com as an alternate URL for the frontend' },
 		{ date: 'July 14, 2024', text: 'Search feature added to frontend.' },
 		{
 			date: 'Jun 30, 2024',

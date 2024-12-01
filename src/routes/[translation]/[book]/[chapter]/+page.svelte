@@ -133,8 +133,7 @@
 			{/if}
 		</div>
 		<Button href={`/${data.currentTranslation}/${data.currentBook}`}>
-			{data.bookStruct.book_name}
-			{data.currentChapter}
+			{data.bookStruct.book_name} - {data.currentChapter} ({data.num_verses})
 		</Button>
 		<div>
 			{#if data.nav.next}

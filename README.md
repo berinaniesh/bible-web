@@ -6,7 +6,7 @@ Written in Javascript / Typescript with the [SvelteKit](https://kit.svelte.dev) 
 
 ## Alternate URL
 
-This same UI is also hosted at [versequick.com](https://versequick.com). 
+This same UI is also hosted at [versequick.com](https://versequick.com).
 
 ## Similar friendly projects
 
