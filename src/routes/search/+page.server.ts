@@ -1,7 +1,6 @@
 import { API_URL } from '$lib';
 import type { SearchJson, Verse } from '$lib/types';
 import type { PageServerLoad } from '../$types';
-import { redirect } from '@sveltejs/kit';
 
 function highlightSearchTerm(verse: Verse, searchText: string) {
 	const searchRegex = new RegExp(`${searchText}`, 'gi');
@@ -33,7 +32,7 @@ function getQueryString(
 }
 
 export const load: PageServerLoad = async ({ url }) => {
-	let search_text = url.searchParams.get('q')!;
+	let search_text = url.searchParams.get('q')!.trim();
 	let search_translation = url.searchParams.get('translation');
 	if (search_translation === null) {
 		search_translation = 'KJV';
