@@ -28,22 +28,3 @@ export function createParallelTranslationsFormSchema(
 }
 
 export type ParallelTranslationsFormSchema = typeof parallelTranslationsFormSchema;
-
-export const searchFormSchema = z.object({
-	search_text: z.string(),
-	translation: z.string(),
-	match_case: z.boolean(),
-	whole_words: z.boolean(),
-	book: z.optional(z.string())
-});
-
-export function createSearchFormSchema(search_text: string) {
-	return z.object({
-		search_text: z.string().default(search_text),
-		translation: z.string().default('KJV'),
-		match_case: z.boolean().default(false),
-		whole_words: z.boolean().default(false)
-	});
-}
-
-export type SearchFormSchema = typeof searchFormSchema;

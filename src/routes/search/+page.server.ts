@@ -1,6 +1,7 @@
 import { API_URL } from '$lib';
 import type { SearchJson, Verse } from '$lib/types';
 import type { PageServerLoad } from '../$types';
+import { redirect } from '@sveltejs/kit';
 
 function highlightSearchTerm(verse: Verse, searchText: string) {
 	const searchRegex = new RegExp(`${searchText}`, 'gi');
@@ -107,4 +108,32 @@ export const load: PageServerLoad = async ({ url }) => {
 		queryString: queryString,
 		verses: searchResultVerses
 	};
+};
+
+export const actions = {
+	default: async ({ request }) => {
+		const formData = await request.formData();
+		let url = '/search';
+		const search_string = formData.get('searchstring');
+		const translation = formData.get('translation');
+		const book = formData.get('book');
+		const match_case = formData.get('matchcase');
+		const whole_words = formData.get('wholewords');
+		if (search_string !== 'null') {
+			url += `?q=${search_string}`;
+		}
+		if (translation !== 'null') {
+			url += `&translation=${translation}`;
+		}
+		if (book !== 'null') {
+			url += `&book=${book}`;
+		}
+		if (match_case === 'true') {
+			url += `&matchcase=true`;
+		}
+		if (whole_words === 'true') {
+			url += `&wholewords=true`;
+		}
+		return url;
+	}
 };
