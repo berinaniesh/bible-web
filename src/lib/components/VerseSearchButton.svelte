@@ -83,7 +83,7 @@
 					<Select.Trigger>
 						<Select.Value placeholder="Book" />
 					</Select.Trigger>
-					<Select.Content>
+					<Select.Content class="h-64 overflow-y-scroll">
 						{#each BOOKS as book}
 							<Select.Item value={book}>{book}</Select.Item>
 						{/each}
