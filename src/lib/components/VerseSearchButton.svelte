@@ -12,6 +12,13 @@
 	$: translation =
 		typeof $page.params.translation === 'undefined' ? 'KJV' : $page.params.translation;
 
+	$: {
+		const urlTranslation = $page.url.searchParams.get('translation');
+
+		if (translation === 'KJV' && urlTranslation !== 'KJV') {
+			translation = urlTranslation || 'KJV'; // Fallback to 'KJV' if no translation param is provided
+		}
+	}
 	function onTranslationChange(value) {
 		translation = value.value;
 	}
