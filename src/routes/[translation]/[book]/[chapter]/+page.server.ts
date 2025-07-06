@@ -55,7 +55,9 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 				parallelTranslations.includes('MLSVP'),
 				parallelTranslations.includes('ASV'),
 				parallelTranslations.includes('WEB'),
-				parallelTranslations.includes('WEBU')
+				parallelTranslations.includes('WEBU'),
+				parallelTranslations.includes('GOVBSI'),
+				parallelTranslations.includes('OOVBSI')
 			)
 		),
 		selectedParallelTranslations: parallelTranslations,
@@ -84,7 +86,9 @@ export const actions: Actions = {
 			enabledParallelTranslations.includes('MLSVP'),
 			enabledParallelTranslations.includes('ASV'),
 			enabledParallelTranslations.includes('WEB'),
-			enabledParallelTranslations.includes('WEBU')
+			enabledParallelTranslations.includes('WEBU'),
+			enabledParallelTranslations.includes('GOVBSI'),
+			enabledParallelTranslations.includes('OOVBSI')
 		);
 		const form = await superValidate(event, formSchema);
 		if (!form.valid) {
@@ -112,7 +116,12 @@ export const actions: Actions = {
 		if (form.data.webu) {
 			cookieArray.push('webu');
 		}
-
+		if (form.data.govbsi) {
+			cookieArray.push('govbsi');
+		}
+		if (form.data.oovbsi) {
+			cookieArray.push('oovbsi');
+		}
 		const cookie: string = cookieArray.join('+');
 		event.cookies.set('parallelTranslations', cookie, {
 			path: `/${event.params.translation}`,

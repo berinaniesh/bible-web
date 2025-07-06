@@ -7,6 +7,10 @@ export const load: PageServerLoad = () => {
 		{ location: '', locationName: 'Changelog', isFinal: true }
 	];
 	const changelog: Changelog[] = [
+		{
+			date: 'Jul 6, 2025',
+			text: 'Add Gujarati (GOVBSI) and Odia (OOVBSI) to both frontend and backend.'
+		},
 		{ date: 'Dec 1, 2024', text: 'Make "read" button secondary (reduce contrast).' },
 		{ date: 'Dec 1, 2024', text: 'Fix search in UI.' },
 		{ date: 'Nov 30, 2024', text: 'Show verse count of the chapter at top.' },

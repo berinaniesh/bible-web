@@ -151,4 +151,4 @@ export const VERSECOUNTS = [
 	105, 61, 105, 13, 14, 25, 404
 ];
 
-export const TRANSLATIONS = ['TOVBSI', 'KJV', 'MLSVP', 'ASV', 'WEB', 'WEBU'];
+export const TRANSLATIONS = ['TOVBSI', 'KJV', 'MLSVP', 'ASV', 'WEB', 'WEBU', 'GOVBSI', 'OOVBSI'];
