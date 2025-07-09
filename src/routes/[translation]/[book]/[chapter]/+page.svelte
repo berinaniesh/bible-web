@@ -27,11 +27,10 @@
 		selectedVerses = verseArray;
 	});
 	let bookNameForbutton = data.bookStruct.book_name;
-	if (bookNameForbutton === 'வெளிப்படுத்தின விசேஷம்') {
+	const isDesktop = mediaQuery('(min-width: 768px) and (orientation: landscape)');
+	if (bookNameForbutton === 'வெளிப்படுத்தின விசேஷம்' && !$isDesktop) {
 		bookNameForbutton = 'வெளிப்படுத்தல்'
 	}
-	const isDesktop = mediaQuery('(min-width: 768px)');
-
 	function convertCommaToDash(input: string) {
 		const numbers = input.split(',').map(Number);
 		let condensedRanges = [];
