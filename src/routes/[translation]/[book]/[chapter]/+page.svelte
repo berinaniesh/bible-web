@@ -28,7 +28,8 @@
 	});
 	let bookNameForbutton = data.bookStruct.book_name;
 	const isDesktop = mediaQuery('(min-width: 768px) and (orientation: landscape)');
-	if (bookNameForbutton === 'வெளிப்படுத்தின விசேஷம்' && !$isDesktop) {
+	const isDesktop2 = mediaQuery('(min-width: 768px)');
+	if (bookNameForbutton === 'வெளிப்படுத்தின விசேஷம்' && !$isDesktop2) {
 		bookNameForbutton = 'வெளிப்படுத்தல்'
 	}
 	function convertCommaToDash(input: string) {
