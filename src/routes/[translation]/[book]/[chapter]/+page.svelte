@@ -26,7 +26,10 @@
 		}
 		selectedVerses = verseArray;
 	});
-
+	let bookNameForbutton = data.bookStruct.book_name;
+	if (bookNameForbutton === 'வெளிப்படுத்தின விசேஷம்') {
+		bookNameForbutton = 'வெளிப்படுத்தல்'
+	}
 	const isDesktop = mediaQuery('(min-width: 768px)');
 
 	function convertCommaToDash(input: string) {
@@ -133,7 +136,7 @@
 			{/if}
 		</div>
 		<Button href={`/${data.currentTranslation}/${data.currentBook}`}>
-			{data.bookStruct.book_name} - {data.currentChapter} ({data.num_verses})
+			{bookNameForbutton} - {data.currentChapter} ({data.num_verses})
 		</Button>
 		<div>
 			{#if data.nav.next}
@@ -159,7 +162,7 @@
 	<div class="h-14 w-10">
 		<!-- Empty div for top positioning -->
 	</div>
-	<div class="px-4">
+	<div class="px-4 wrap-break-word">
 		<div>
 			{#each data.verses as verse, index}
 				<div>
