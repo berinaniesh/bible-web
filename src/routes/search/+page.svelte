@@ -7,7 +7,10 @@
 </svelte:head>
 
 <div class="px-4 md:px-0">
-	<h1 class="mb-4 text-xl font-bold">Search results</h1>
+	<h1 class="mb-4 text-xl">
+  		<span class="font-bold">Search results</span>
+  		<span> ({data.num_verses} verses)</span>
+	</h1>
 	<div class="my-6">
 		<p>{@html data.queryString}</p>
 	</div>

@@ -105,7 +105,8 @@ export const load: PageServerLoad = async ({ url }) => {
 		search_match_case: searchJson.match_case,
 		search_whole_word: searchJson.whole_words,
 		queryString: queryString,
-		verses: searchResultVerses
+		verses: searchResultVerses,
+		num_verses: searchResultVerses.length
 	};
 };
 
