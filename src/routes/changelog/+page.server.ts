@@ -8,6 +8,10 @@ export const load: PageServerLoad = () => {
 	];
 	const changelog: Changelog[] = [
 		{
+			date: 'Jul 26, 2025',
+			text: 'Add options to copy as paragraph and include url to site while copying.'
+		},
+		{
 			date: 'Jul 6, 2025',
 			text: 'Add Gujarati (GOVBSI) and Odia (OOVBSI) to both frontend and backend.'
 		},

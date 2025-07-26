@@ -21,7 +21,8 @@
 		<Separator />
 		<Breadcrumb crumbItems={$page.data.currentLocation} />
 	</div>
-	<div class="mt-32">
+	<div class="h-32 w-full"></div>
+	<div class="scroll-mt-44">
 		<slot />
 	</div>
 </div>

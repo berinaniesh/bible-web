@@ -44,7 +44,7 @@
 		<Separator></Separator>
 	</div>
 </div>
-<div class="mx-auto my-6 mt-48 grid w-2/3 grid-cols-4 gap-3 md:grid-cols-6">
+<div class="mx-auto my-6 mt-20 grid w-2/3 grid-cols-4 gap-3 md:grid-cols-6">
 	{#each data.chapters as chapter}
 		<Button
 			href={'/' + data.currentTranslation + '/' + data.currentBook + '/' + chapter}

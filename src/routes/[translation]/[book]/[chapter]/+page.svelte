@@ -12,6 +12,9 @@
 	import { browser } from '$app/environment';
 	import { toast } from 'svelte-sonner';
 	import { mediaQuery } from 'svelte-legos';
+	import Switch from '$lib/components/ui/switch/switch.svelte';
+	import Label from '$lib/components/ui/label/label.svelte';
+	import { SITE_URL } from '$lib';
 
 	const copiedVerses = writable();
 	copiedVerses.set([]);
@@ -30,8 +33,31 @@
 	const isDesktop = mediaQuery('(min-width: 768px) and (orientation: landscape)');
 	const isDesktop2 = mediaQuery('(min-width: 768px)');
 	if (bookNameForbutton === 'வெளிப்படுத்தின விசேஷம்' && !$isDesktop2) {
-		bookNameForbutton = 'வெளிப்படுத்தல்'
+		bookNameForbutton = 'வெளிப்படுத்தல்';
 	}
+
+	const superscriptMap: { [key: string]: string } = {
+		'0': '⁰',
+		'1': '¹',
+		'2': '²',
+		'3': '³',
+		'4': '⁴',
+		'5': '⁵',
+		'6': '⁶',
+		'7': '⁷',
+		'8': '⁸',
+		'9': '⁹'
+	};
+
+	function toSuperscript(num: number) {
+		return String(num)
+			.split('')
+			.map((digit) => superscriptMap[digit] || '')
+			.join('');
+	}
+
+	let copyAsParagraph = false;
+	let includeLinkToSite = false;
 	function convertCommaToDash(input: string) {
 		const numbers = input.split(',').map(Number);
 		let condensedRanges = [];
@@ -63,6 +89,8 @@
 
 	function getVerseNumbers() {
 		if (browser) {
+			// To add to url while copying.
+			let firstVerseNumber = 0;
 			const groupedVerses = selectedVerses.reduce((accumulator: any, verse) => {
 				const tra = verse.translation;
 				if (!accumulator[tra]) {
@@ -74,6 +102,7 @@
 			for (const tra in groupedVerses) {
 				groupedVerses[tra].sort((a: any, b: any) => a.verse_number - b.verse_number);
 			}
+			firstVerseNumber = groupedVerses[Object.keys(groupedVerses)[0]][0].verse_number;
 			let chapterStrings: string[] = [];
 			let chapterVerses: string[] = [];
 			for (const tra in groupedVerses) {
@@ -82,10 +111,18 @@
 				for (let i = 0; i < groupedVerses[tra].length; i++) {
 					currentChapterString += groupedVerses[tra][i].verse_number + ',';
 					if (groupedVerses[tra].length > 1) {
-						currentChapterVerse += `${groupedVerses[tra][i].verse_number}. ${groupedVerses[tra][i].verse}\n\n`;
+						if (copyAsParagraph) {
+							const superscriptNumber = toSuperscript(groupedVerses[tra][i].verse_number);
+							currentChapterVerse += `${superscriptNumber}${groupedVerses[tra][i].verse} `;
+						} else {
+							currentChapterVerse += `${groupedVerses[tra][i].verse_number}. ${groupedVerses[tra][i].verse}\n\n`;
+						}
 					} else {
 						currentChapterVerse += `${groupedVerses[tra][i].verse}\n\n`;
 					}
+				}
+				if (copyAsParagraph && groupedVerses[tra].length > 1) {
+					currentChapterVerse += '\n\n';
 				}
 				const mantissa =
 					convertCommaToDash(currentChapterString.split(':')[1]) + ' ' + '(' + tra + ')';
@@ -99,6 +136,9 @@
 				finalString += chapterStrings[i];
 				finalString += '\n\n';
 				finalString += chapterVerses[i];
+			}
+			if (includeLinkToSite) {
+				finalString += `${SITE_URL}/${data.currentTranslation}/${data.currentBook}/${data.currentChapter}#${firstVerseNumber}\n\n`;
 			}
 			navigator.clipboard.writeText(finalString.substring(0, finalString.length - 1));
 		}
@@ -162,7 +202,7 @@
 	<div class="h-14 w-10">
 		<!-- Empty div for top positioning -->
 	</div>
-	<div class="px-4 wrap-break-word">
+	<div class="wrap-break-word px-4">
 		<div>
 			{#each data.verses as verse, index}
 				<div>
@@ -201,6 +241,16 @@
 							</li>
 						{/each}
 					</ul>
+					<div class="my-4 flex flex-col space-y-2 text-muted-foreground">
+						<div class="flex items-center space-x-2">
+							<Switch bind:checked={copyAsParagraph} id="copyAsParagraph"></Switch>
+							<Label for="copyAsParagraph">Copy verses as paragraphs</Label>
+						</div>
+						<div class="flex items-center space-x-2">
+							<Switch bind:checked={includeLinkToSite} id="includeLinkToSite"></Switch>
+							<Label for="includeLinkToSite">Include link to this site</Label>
+						</div>
+					</div>
 					<Button on:click={getVerseNumbers}>Copy</Button>
 				</div>
 			</Sheet.Content>
@@ -224,6 +274,16 @@
 							</li>
 						{/each}
 					</ul>
+					<div class="my-4 flex flex-col space-y-2 text-muted-foreground">
+						<div class="flex items-center space-x-2">
+							<Switch bind:checked={copyAsParagraph} id="copyAsParagraph"></Switch>
+							<Label for="copyAsParagraph">Copy verses as paragraphs</Label>
+						</div>
+						<div class="flex items-center space-x-2">
+							<Switch bind:checked={includeLinkToSite} id="includeLinkToSite"></Switch>
+							<Label for="includeLinkToSite">Include link to this site</Label>
+						</div>
+					</div>
 					<Button on:click={getVerseNumbers}>Copy</Button>
 				</div>
 			</Sheet.Content>

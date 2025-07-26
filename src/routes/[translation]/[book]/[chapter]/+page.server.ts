@@ -63,6 +63,7 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 		selectedParallelTranslations: parallelTranslations,
 		displayParallel: true,
 		currentLocation: currentLocation,
+		currentBook: params.book,
 		currentChapter: params.chapter,
 		nav: nav,
 		verses: verses,
