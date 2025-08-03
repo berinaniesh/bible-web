@@ -15,6 +15,7 @@
 	import Switch from '$lib/components/ui/switch/switch.svelte';
 	import Label from '$lib/components/ui/label/label.svelte';
 	import { SITE_URL } from '$lib';
+	import { parallelTranslationsFormSchema } from '$lib/schema/index.js';
 
 	const copiedVerses = writable();
 	copiedVerses.set([]);
@@ -29,13 +30,7 @@
 		}
 		selectedVerses = verseArray;
 	});
-	let bookNameForbutton = data.bookStruct.book_name;
 	const isDesktop = mediaQuery('(min-width: 768px) and (orientation: landscape)');
-	const isDesktop2 = mediaQuery('(min-width: 768px)');
-	if (bookNameForbutton === 'வெளிப்படுத்தின விசேஷம்' && !$isDesktop2) {
-		bookNameForbutton = 'வெளிப்படுத்தல்';
-	}
-
 	const superscriptMap: { [key: string]: string } = {
 		'0': '⁰',
 		'1': '¹',
@@ -176,7 +171,7 @@
 			{/if}
 		</div>
 		<Button href={`/${data.currentTranslation}/${data.currentBook}`}>
-			{bookNameForbutton} - {data.currentChapter} ({data.num_verses})
+			{data.middleButtonText}
 		</Button>
 		<div>
 			{#if data.nav.next}

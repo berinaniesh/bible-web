@@ -5,7 +5,7 @@ import { createParallelTranslationsFormSchema } from '$lib/schema';
 import { fail } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
+export const load: PageServerLoad = async ({ request, fetch, params, cookies }) => {
 	let parallelTranslationsString = cookies.get('parallelTranslations');
 	let parallelTranslations: string[] = [];
 	if (parallelTranslationsString) {
@@ -34,8 +34,10 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 	const res2 = await fetch(
 		`${API_URL}/verses?tr=${params.translation}&b=${params.book.replace('-', ' ')}&ch=${params.chapter}`
 	);
+	const res3 = await fetch(`${API_URL}/${params.translation}/books`);
 	const nav = await res.json();
 	const verses = await res2.json();
+	const booksFromApi = await res3.json();
 	let paralellTranslationVerses = [];
 	for (let i = 0; i < parallelTranslations.length; i++) {
 		const res3 = await fetch(
@@ -43,6 +45,13 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 		);
 		const versesnew = await res3.json();
 		paralellTranslationVerses.push(versesnew);
+	}
+	const actualBookStruct = booksFromApi.find((b) => b.book === params.book.replace('-', ' '));
+	let middleButtonText = `${actualBookStruct.book_name} - ${params.chapter} (${verses.length})`;
+	const userAgent = request.headers.get('user-agent') || '';
+	const isMobile = /mobile/i.test(userAgent);
+	if (params.translation === 'TOVBSI' && isMobile) {
+		middleButtonText = middleButtonText.replace('வெளிப்படுத்தின விசேஷம்', 'வெளிப்படுத்தல்');
 	}
 	cookies.set('currentTranslation', params.translation, { path: '/', maxAge: 60 * 60 * 24 * 30 });
 	cookies.set('currentBook', params.book, { path: '/', maxAge: 60 * 60 * 24 * 30 });
@@ -67,8 +76,8 @@ export const load: PageServerLoad = async ({ fetch, params, cookies }) => {
 		currentChapter: params.chapter,
 		nav: nav,
 		verses: verses,
-		num_verses: verses.length,
-		parallelTranslationVerses: paralellTranslationVerses
+		parallelTranslationVerses: paralellTranslationVerses,
+		middleButtonText: middleButtonText
 	};
 };
 
