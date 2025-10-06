@@ -48,7 +48,7 @@
 			on:keypress={() => {
 				addToCopiedArray(verse);
 			}}
-			class={'my-4 leading-loose decoration-dotted ' + font}
+			class={'my-4 leading-loose decoration-dotted scroll-mt-44 ' + font}
 		>
 			<sup class="-z-50 text-muted-foreground">{verse.verse_number}</sup>
 			{#if selected}
@@ -69,7 +69,7 @@
 			on:keypress={() => {
 				addToCopiedArray(verse);
 			}}
-			class={'my-4 leading-loose decoration-dotted ' + font}
+			class={'my-4 leading-loose decoration-dotted scroll-mt-44' + font}
 		>
 			<sup class="-z-50 text-muted-foreground">{verse.verse_number}</sup>
 			{#if selected}
