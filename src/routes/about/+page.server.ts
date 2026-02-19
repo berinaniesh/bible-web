@@ -6,6 +6,7 @@ export const load: PageServerLoad = () => {
 		{ location: '', locationName: 'About', isFinal: true }
 	];
 	const aboutPoints = [
+		`A newer version of this app is available <a class="underline text-blue-600" target="_blank" href="https://scripture.pp.ua">here</a>. This site will be updated to use the new software in the coming days.`,
 		`This site is built by <a class="underline text-blue-600" target="blank" href="https://berinaniesh.xyz">Berin Aniesh</a> in the hopes that it will be useful to someone.`,
 		`If you have any comments or feedbacks about the site, <a target="blank" class="underline text-blue-600" href="https://berinaniesh.xyz/contact">let me know</a>.`,
 		`To participate in the development, join the <a class="underline text-blue-600"  target="blank" href="https://t.me/bibleappdesign" >telegram group</a>.`,
